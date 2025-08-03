@@ -1,0 +1,16 @@
+# Folders with figures
+backup_figures/*
+figures/*
+figures_slides/*
+
+# LaTeX awkward stuff
+main.bbl
+main.aux
+main.blg
+main.log
+main.fls
+main.synctex.gz
+pdflatex44676.fls
+main.fdb_latexmk
+main.pdf
+

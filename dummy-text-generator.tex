@@ -1,0 +1,46 @@
+% If not already installed in the main!
+% \usepackage{lipsum}
+% \usepackage{xparse}
+
+%% Instructions
+% \usepackage{import}
+% \import{./}{dummy-text-generator.tex}
+
+%% Example usage
+% \lipsumsentence % This prints out seven sentences for some reason
+% \section{Three sentences}
+% \lipsumsentence[2-4]
+% \section{Some single sentences}
+% \lipsumsentence[1]
+% \lipsumsentence[2]
+% \lipsumsentence[3]
+% \lipsumsentence[4]
+% \lipsumsentence[5]
+% store a big set of sentences
+
+\unpacklipsum[1-100] % it was \UnpackLipsum before version 2.0
+
+\ExplSyntaxOn
+% unpack \lipsumexp
+\seq_new:N \g_lipsum_sentences_seq
+\cs_generate_variant:Nn \seq_set_split:Nnn { NnV }
+\seq_gset_split:NnV \g_lipsum_sentences_seq {.~} \lipsumexp
+
+\NewDocumentCommand{\lipsumsentence}{>{\SplitArgument{1}{-}}O{1-7}}
+ {
+  \lipsumsentenceaux #1
+ }
+\NewDocumentCommand{\lipsumsentenceaux}{mm}
+ {
+  \IfNoValueTF { #2 }
+   {
+    \seq_item:Nn \g_lipsum_sentences_seq { #1 }.~
+   }
+   {
+    \int_step_inline:nnnn { #1 } { 1 } { #2 }
+     {
+      \seq_item:Nn \g_lipsum_sentences_seq { ##1 }.~
+     }
+   }
+ }
+\ExplSyntaxOff
