@@ -6,6 +6,10 @@
 \graphicspath{{figures/}}
 \usepackage{xparse}
 \usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+% \usepackage{glossaries}
 % \input{header}
 
 \usepackage{silence}
@@ -19,6 +23,10 @@
 
 % Only with LaTeX-Physics
 \renewcommand{\vb}{\vectorbold}
+
+% For glossary without glossaries package
+\newcommand{\term}[2]{\textbf{#1}: #2}
+\newcommand{\acronym}[2]{\textbf{#1} -- #2}
 
 \begin{document}
 \ActivateWarningFilters[lipsum]
@@ -41,36 +49,243 @@ For the past four years I have been working with the ATLAS experiment.
 \section{The ATLAS Experiment}
 The ATLAS experiment is a general purpose particle detector at the Large Hadron
 Collider (LHC) at the European Center for Nuclear Physics Research (CERN). It
-stands for \textbf{A} \textbf{T}oroidal \textbf{L}HC
-\textbf{A}pparatu\textbf{S}.
-\begin{wrapfigure}{l}{0.5\textwidth}
+stands for \textbf{A} \textbf{T}oroidal \textbf{L}HC \textbf{A}pparatu\textbf{S}.
+The detector is named after the toroidal magnet system which is integral to the
+design and plays an important role in physical observations. ATLAS is designed
+to be a general purpose particle detector to observe collisions from the full
+LHC beam energy and intensity. It's dimensions are 44 meters across, has a
+diameter of 25 meters, and is over 7000 tonnes \cite{Aad_2024}. 
+\begin{wrapfigure}{l}{0.42\textwidth}
     \centering
-    \includegraphics[width=0.48\textwidth]{Aerial_view_of_the_area_where_the_LHC_ring_is_located}
+    \includegraphics[width=0.4\textwidth]{Aerial_view_of_the_area_where_the_LHC_ring_is_located}
     \caption{Aerial view of the LHC}
     \label{fig:aerial_view}
 \end{wrapfigure}
-This is aptly named after the toroidal shaped magnet system which is integral to
-the detector and our physics results. The design is such that it is a general
-purpose particle detector designed to observe collisions from the full beam
-energy and luminosity (a measure of number of collisions) of the LHC. As a
-general purpose particle detector it is a composite of many different
-subdetector systems, each with their own physics objectives in mind. Information
-fro the many different subcomponents of the detector are recorded by
+As a general purpose particle detector it is a composite of many different
+subdetector systems, each with their own physics objectives in mind. A brief
+overview of important subsystems are provided in the following subsections. The
+detector covers nearly the entire solid angle around the collision point
+\cite{The_ATLAS_Collaboration_2008}. 
 
-The amount of data our detector can observe exceeds the ability to record it.
-This is one of the primary functions of the trigger system. This system is
+The LHC beam can supply protons and heavy ion nuclei at energies up to $13.6$
+TeV \ref{tab:data_taking} \cite{Aad_2024}. Particles are injected into the LHC
+ring in bunches from the SPS beam. Bunches are held in place with Radio
+Frequency (RF) electric fields, with a given spacing. During comissioning and
+testing, bunches can be partially filled, and the LHC has a specified
+\textit{bunch fill pattern} \cite{}. During data taking however, the LHC is nominally
+operating with a full bunch fill. During beam preparations, when the fill is
+complete, the beam energy is slowly ramped up to target operational energies.
+Bunches are guided around the LHC ring with dipole magnets \cite{}. At
+operational energies, particles are highly lorentz boosted, and have a bunch
+crossing spacing of $25$ ns. Collisions occur at the crossing point located at
+the center of the detector, and are subject to \textit{beam optics}. Beam optics
+govern the number of collisions per bunch crossing through the density of
+bunches and accuracy of the collision point. Higher beam collimation leads to
+higher instantaneous luminosity. This is parameterized at the LHC by $\beta*$
+\cite{Aad_2024}. The many collisions that occur during a single bunch crossing
+is known as \textit{in time pile-up} and is paramaterized by $<\mu>$. This
+depends on beam conditions during each data taking year. Different data taking
+years is shown in \ref{fig:pileup}. 
+
+\subsection{Detector Subsystems}
+\subsubsection{Tracking and Inner Detector}
+Tracking of charged particle tracks is done as a whole with the Inner Detector
+(ID). The inner detector is a composite of subdetector systems. The inner
+detector sits inside of a superconducting solenoid, and holds a magnetic field
+of 2 Tesla, where the field lines are parallel to the beam axis. It has
+psuedorapidity coverage of $|\eta| < 2.5$. The subsystems involved are the
+Silicon Pixel detector, the Insertable B Layer (IBL) housed inside the Pixel,
+the Semiconductor Tracker (SCT), and the Transition Radiation Tracker (TRT).
+
+The Silicon Pixel detector along with the IBL has the highest granularity of
+tracking and can provide up to four measurements per track. There are three
+barrel layers and three endcap layers, and the IBL provides the fourth inner
+layer. It has $r, \phi, z$ spatial measurement capabilities with a granularity
+of $50 \mu m \times 400 \mu m$. The Pixel has approximately 80 million readout
+channels. Along with the IBLs 12 million, there are 92 million readout channels
+combined \cite{Aad_2024}.
+
+The SCT is a silicon microstrip tracker which provides up to eight hits per
+track, which results in four spatial measurements. In the barrel, one layer of
+strips is parallel to the beam axis, and provides $r,\phi$ measurements. In
+conjunction, there are small angle (40 mrad) stereo strips which provide
+$r,\phi,z$ measurements. In the endcap, it is constructed with radially oriented
+strips with again 40 mrad stereo strips, with a mean pitch of $80 \mu m$. In
+total, the SCT has approximately 6.3 million readout channels.
+
+Finally we have the TRT. It is constructed with gas filled straw tubes,
+interleaved with transition radiation material. There are (look up)
+approximately 300k proportional drift tubes. The TRT provides additional track
+measurements at $|\eta| \leq 2.0$ and $p_T<0.5$ GeV. Due to the radial distance,
+it aids in extended track fitting. A track can average 30 $r,\phi$ points with
+130 $\mu m$ resolution. In addition, it aids in electron identification (eID).
+This is achieved by measuring the fraction of hits above a higher energy deposit
+threshhold corresponding to the transition radiation \cite{Aad_2024}.
+
+\subsubsection{Calorimetry}
+
+The ATLAS Calorimetry covers the entire psuedorapidity range of $|\eta| < 4.9$.
+It is a sampling calorimeter, which is intended to entirely stop electromagnetic
+showers and particles that are strongly interacting, as well as measure the
+incident energy as accurately as possible. In addition, the calorimetry is
+segmented in $r, \phi, z$ to provide position measurements. There are two
+variants of sampling calorimetry technology used - Liquid Argon (LAr) and Tiled
+Steel and Scintillator material. The LAr Calorimetry is of two varieties - Lead
+Liquid Argon, and Copper Liquid Argon. A full schematic is shown in figure
+\ref{fig:calo_schematic}
+
+The Copper Liquid Argon is in the outer ends of the calorimeter - the Hadronic
+End Cap (HEC), and is composed of four layers. These layers are segmented
+further into radial petals, segmented by $r,\phi$. The inside end caps are three
+layers of Lead LAr, the ElectroMagnetic End Caps (EMEC). Both end caps are
+housed inside the same cryostat unit. Psuedorapidity ranges from $|\eta|>3.2$
+are covered by both end caps.
+
+The inner barrel is again Lead LAr, and is an electromagnetic calorimeter, thus
+the ElectroMagnetic Barrel (EMB). It is constructed from three concentric
+cylinders, and segmented in $\phi, z$. EMB1 has fine granularity in $z$,
+providing precise measurements of psuedorapidity. Imporantly, this is used for
+electron identification. The EMB is housed in it's own separate cryostat unit.
+
+The outer barrel is the Tile Scintillation calo. Steel was chosen as the
+absorber as it is cheap and has relatively high density in order to increase the
+strong force interaction length. Charged particles emitted from primarily
+hadronic showers, and electromagnetic showers as a secondary mechanism interact
+with a scintillating plastic tiled between the steel plates. The short
+wavelength photons emitted from the scintillators are coupled to wavelength
+shifting optical fibers, which are ganged together into optical read out
+modules. The current produced from the modules is a highly non-linear function
+of the input light in a highly non-linear way. This is in part what makes
+hadronic calorimetry within ATLAS challenging
+\cite{The_ATLAS_Collaboration_2008}\cite{ml4p}. The Tile calo is covered by
+$|\eta|<1.7$
+
+There is some compromise for the calorimetry - primarily hadronic - in the
+transition region between the barrel and the end caps due to geometry and design
+limitations. A full break down of the rapidity coverage by the calorimeter is
+shown in \ref{fig:calo_rapidity}.
+
+\subsubsection{Muon System}
+
+The muon system in ATLAS provides tracking and triggering on muon events. As
+muons are heavy, the electromagnetic energy losses are small. Thus muons of
+sufficient energy pass through the detector without fully showering. Therefore
+the muon system is the outermost component of ATLAS and form the large outside
+structure. The muon system is composed of two main systems. The Muon Spectometer
+(MS) and the end caps. 
+
+The muon spectrometer is the outer ``barrel''. The structure is formed with
+superconducting air core magnets, which produce field lines that are
+approximately concentric around the barrel. This was a design choice to produce
+fields which are approximately orthogonal to the direction of travel. Thus, this
+enables the measurement of track $p_T$ via bending as a result of the magnetic
+field. The range of $|\eta|<1.4$ is fully covered throught the barrel toroid.
+measures $p_T$ through the magnetic deflection of tracks. The outer toroid forms
+the large outside component of ATLAS and provides psuedorapidity coverage of
+$|\eta|<2.7$.
+
+Paragraph about wheels
+
+\begin{itemize}
+    \item Thin Gap Chambers (TGCs)
+    \item MDT (?)
+    \item Resistive Plate Chambers (RPCs)
+    \item 
+\end{itemize}
+
+During Long Shutdown 2, the inner wheels were replaced with the ``New Small
+Wheels'' (NSW). This upgrade provides tracking measurements $1.3<|\eta|<2.7$. It
+is constructed with two small tric TGCs (sTGCs), and Micromegas micromesh
+technology. Both are capable fo tracking measurements, and lowered the $p_T$
+resolution. In addition, this upgrade significantly reduced the read
+out, which was necessary for higher luminosity data taking. Namely, the L1 rate
+was reduced - which will be covered in Section \ref{sec:tdaq}.
+
+\subsubsection{ATLAS TDAQ}\label{sec:tdaq}
+Recording is handled by the Trigger and Data AQuisition system (TDAQ). The
+amount of data ATLAS can record exceeds the ability process, stream, and store
+it. Furthermore, not all bunch collisions produce physics of interest to
+analysis groups. This is why we require a trigger system. This system is
 designed to efficienctly make decisions of what events to record. This is done
-in two stages, the level one trigger (L1), and the high level trigger (HLT).
+in two stages, the level one trigger (L1), and the High Level Trigger (HLT). L1
+is implemented with a combination of hardware and firmware, carried out in
+successive stages of read out boards. It has a maximum allowable latency for the
+electronics of $2.5 \mu\text{s}$ per event. L1 often uses simplifications to
+produce low resolution physics objects. For example, the L1 Calorimetry groups
+together electrodes to produce very low resolution jets. Given a bunch group
+spacing of 25 ns, this yields a crossing of 40 MHz. The Read Out System (ROS) is
+designed to handle stream rates of 100 kHz, with an additional 20\% contingency.
+Thus the overall requirement of the L1 trigger system is to take events at 40
+MHz, and selectively trigger on interesting physics events at a rate of 100 kHz.
+
+The HLT decisions are made with a CPU farm of (fix me) thousands of CPUs. The
+goal is to reconstruct physics observables as closely as possible to offline
+selection and reconstruction. The HLT event processing time for an instantaneous
+luminosity of $\mathscr{L} = 2\times 10^{34}\;cm^{-2}s^{-1}$ is approximately
+400 ms.  Average event sizes at a pileup of $<\mu> \approx 60$ are 2.1 MB. The
+HLT has a maximum allowable rate of 5 kHz. The limitation on recording is the
+data throughput, at 8 Gb/s. Thus the goal is to have an average HLT output rate
+of 3 kHz, which produces 6.3 GB/s of output, with a maximum allowable output of
+5 kHz.
+
+A schematic of the TDAQ system is given in \ref{fig:tdaq_schematic}.
+
+
+\subsection{Data Taking and Conditions}
+The ATLAS detector has been operational since 2008, undergoing annual data
+taking runs and shutdowns, as well as long shut-down periods (LS1 and LS2).
+Currently, the physics program with ATLAS is finalizing it's third data taking
+run - Run 3. This is summarized in the following table.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ l c c c }
+        % \noalign{\vskip0pt}\hline\noalign{\vskip3pt}
+        & Years & Integrated Luminosity [$\text{fb}^{-1}$] & $\sqrt{s}$ Energy [TeV] \\ 
+        \noalign{\vskip0pt}\hline\noalign{\vskip3pt}
+        \multirow{2}{*}{Run 1} & \multirow{2}{*}{$2009-2013$} & 5 & 7 \\  
+         &  & 21 & 8 \\
+        LS1 & $2013-2015$ & - & - \\
+        Run 2 & $2015-2018$ & 147 & 13 \\
+        LS2 & $2019-2022$ & - & - \\
+        Run 3 & $2022-2025$ & 250 & 13.6 \\
+        \hline
+    \end{tabular} 
+    \caption{Summary of data taking with the ATLAS detector \cite{Aad_2024}.}
+    \label{tab:data_taking}
+\end{table}
+During Run 2, ATLAS reached a peak \textit{instantaneous} luminosity of
+$\mathscr{L} = 2.1\times 10^{34} \;\text{cm}^{-2}\text{s}^{-1}$. Average
+interactions per bunch crossing are 33.7 although this changed year over year
+\ref{fig:bunch_crossings}. Heavy ion data is not discussed here but can be found
+in references \cite{The_ATLAS_Collaboration_2008}\cite{Aad_2024}. The fration of
+operational channels for the end of Run 2 was $99.5\%$ for calorimetry and
+$95\%$ for tracking systems. Over eight years of data taking from the start of
+Run 1, the ATLAS data taking efficiency rose from $90\%$ to $95\%$. The fraction
+of this data collected which is marked as good for physics arose from $88.8\%$
+to $97.5\%$. During Run 2, the average pileup was 33.7, and for Run 3, at an
+instantaneous luminosity of $\mathscr{L} = 2\times 10^{34}
+\;\text{cm}^{-2}\text{s}^{-1}$, peak pile up was between $52-57$ with a maximum
+of $<60$ \cite{Aad_2024}. 
+
+Beam optics and techniques were also improved during Run 2. From Run 1 to Run 2,
+a larger number of bunches fro a shorter bunch spacing at higher energy were
+used. This led to ``brighter'' collisions. This is attributed to the PS
+injection scheme, which was changed in 2016, which was called Batch Production
+Merging and Splitting (BPMS). The result was a smaller beam size in the
+transverse plane. In 2017, the crossing angle anti-legelling scheme was
+introduced, which gradually reduced the crossing angle at the injection point as
+the bunch intensity decreased. In 2018, this was augmented with a $\beta*$
+anti-levelling scheme, which gave an approximate $15\%$ additional squeeze at
+the injection point at the end of each fill. The result of both schemes inreased
+the integrated luminosity without increasing the peak instantaneous luminosity
+by running for longer near the peak instantaneous luminosity \cite{Aad_2024}.
+
 \begin{wrapfigure}{r}{0.5\textwidth}
     \centering
     \includegraphics[width=0.5\textwidth]{atlas_schematic}
     \caption{Schematic of the ATLAS detector.}
     \label{fig:atlas_schematic}
 \end{wrapfigure}
-
-\begin{itemize}
-    \item Make a note of importance of pile-up
-\end{itemize}
 
 \newpage
 \begin{figure}[t!]
@@ -149,7 +364,6 @@ Run 3 with Athena Release 22.
 
 See \ref{fig:cleaning_performance_subfigure} for the full characterization.
 \newpage
-
 
 \newpage
 \section{Resonant Analysis of Boosted Di-Higgs to Four Bottom Quarks}
@@ -433,6 +647,7 @@ forward neural net. The final results are summarized in Figure \ref{}
 \end{figure}
 
 
+
 \newpage
 \subsection{My Contributions}
 
@@ -481,13 +696,50 @@ forward neural net. The final results are summarized in Figure \ref{}
 \lipsum[20-21]
 
 \section{Conclusion}
-\lipsum[25]
+For this analysis, we have a very well motivated theoretical model to study. In
+addition, there are many BSM models which couple to the Higgs. Therefore, it is
+strongly motivated to do generic heavy resonance searches, in addition to the
+Graviton search. This study can be added with little additional effort, beyond
+the signal request and preliminary data processing, which has negligeable
+processing time. As we are building upon the previous searches done by others
+\cite{previous_results}, we have a good understanding of many aspects of the
+analysis. These include, signal topology, background estimation techniques,
+signal, validation and control region selections, as well as a reference for
+sensitivity. There are several improvements to the general analysis techniques
+that give reason to believe that these results will be more sensitive than
+previous results. First we have a considerably more data. In addition to
+additional integrated luminosity, the $pp$ collisions are occuring at a higher
+center of mass energy. Although this is an incremental increase, it will have a
+disproportionate effect on heavy resonance searches. Furthermore, the
+improvements to Xbb tagging (a roughly $2.5\times$ improvement), will yield a
+higher signal sensitivity than before. In addition, there have been improved
+techniques to large radius jet reconstruction and calibration since the previous
+results were published \cite{large_r_jet}. The preliminary results are promising
+thus far, and the analysis is proceeding within a reasonable timeline for
+graduation.
 
 \section{Covered Topics (Delete me later)}
 \begin{itemize}
     \item 
 \end{itemize}
 \newpage
+
+\newpage
+\appendix{Glossary}
+\section{Glossary}
+\subsection{Acronyms}
+\acronym{AI}{Artificial Intelligence}
+
+\acronym{GPU}{Graphics Processing Unit}
+
+\acronym{ML}{Machine Learning}
+
+\subsection{Terms}
+\term{Algorithm}{A step-by-step procedure for solving a problem}
+
+\term{Database}{A structured collection of data}
+
+\term{Variable}{A symbol that represents a value that can change}
 
 \appendix{Machine Learning for Pions}
 \begin{figure}[t]
@@ -509,6 +761,50 @@ forward neural net. The final results are summarized in Figure \ref{}
 \caption{Main results from the machine learning for pions project.}
 \label{fig:ml4p_main_results.}
 \end{figure}
+\appendix{The ATLAS Detector}
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[t]{.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Inner_Detector_Schematic}
+        \caption{Schematic of the ATLAS Inner Detector.}
+        \label{subfig:inner_detector_schematic}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{ATLAS_DAQ}
+        \caption{ATLAS DAQ overview.}
+        \label{subfig:daq_schematic}
+    \end{subfigure}
+    ~
+    \centering
+    \begin{subfigure}[t]{.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Calo_System}
+        \caption{Calorimetry System.}
+        \label{subfig:calo_schematic}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Muon_System}
+        \caption{Calorimetry System.}
+        \label{subfig:muon_system_schematic}
+    \end{subfigure}
+\caption{Schematics for the ATLAS detector main subsystems \cite{Aad_2024}.}
+\label{fig:ATLAS_Schematics}
+\end{figure}
+
+\newpage
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{ATLAS_DAQ}
+    \caption{ATLAS DAQ overview. \cite{Aad_2024}}
+    \label{fig:daq_schematic}
+\end{figure}
+
+\newpage
 
 \appendix{Qualification Project}
 \begin{figure}[t]
