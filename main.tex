@@ -623,7 +623,8 @@ truth jet reconstructed mass and energy. A flaw
 Finally, the results are such that accross the whole spectrum of working points
 for $H(b\bar{b})$ tagging efficiency, the GN2X algorithm outputforms the
 previous iterations of taggers. Namely the $D_Xbb$, which is simply the feed
-forward neural net. The final results are summarized in Figure \ref{}
+forward neural net. The final results are summarized in Figure
+\ref{fig:Xbb_tagger}.
 
 \newpage
 \subsection{Previous Results}
@@ -646,7 +647,45 @@ forward neural net. The final results are summarized in Figure \ref{}
 \label{fig:previous_results}
 \end{figure}
 
+Previous heavy resonance searches have been conducted with ATLAS in the Di-Higgs
+to four b channel for both boosted and resolved channels. These analysis use
+$126 \text{fb}^{-1}$ of data for resolved and $139\text{fb}^{-1}$ for boosted.
+This is data from Run 2 operating at $\sqrt{s}=13\text{TeV}$. Both channels
+trigger on jets reconstructed with the anti-$k_t$ algorithm \cite{antikt}.
+Spin-0 and Spin-2 samples were produced at leading order with MadGraph5
+\cite{madgraph5_OG} and simulated with Geant4 \cite{geant4}. Physics objects are
+reconstructed with Athena \cite{atlas_simulation}.
 
+This analysis used a different signal, control and validation region than the
+the Vector Boson Fusion (VBF) paper \cite{vbf_hh4b}, and current work. The
+selections are as follows
+\begin{align}
+    SR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+    VR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+    CR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+\end{align}
+
+No significant excesses were observed, and there was good agreement between the
+background estimation and observed data. Profile likelihood fits were carried
+out in bins of $M_{HH}$ for both boosted and resolved channels. Global
+significance is computed using the number of crossings below $p=0.5$ is used in
+combination with the local $p-\text{value}$ to produce a global
+$p-\text{value}$. The most significant excess is found for a signal with mass of
+1100 GeV, which had a local significance of $2.3\sigma$. The global significance
+was found to be $0.4\sigma$ for the spin-0 resonance and $0.8\sigma$ for spin-2.
+
+Upper limits on produciton cross section for gluon-gluon fusion ($\sigma_{ggF}$)
+were produced based on the $CL_S$ method, set at the 95\% confidence level. The
+results can be seen in Figure \ref{fig:previous_results}. Below $3 \text{TeV}$,
+limits are computed with asymptotic formulae. Beyond this mass point, this
+approimation is innacurate and thus limits are computed with sampleing
+psuedo-experiments. In Figure \ref{fig:previous_results}, a model with a base
+case of $k/\overline{M}_{Pl}=1$ is shown. This is an arbitrary number, however
+the motivation is such that extra dimensions can explain the \textit{big
+hierarchy} problem with little fine tuning, and thus one would want
+\textit{natural} values. This is of course a matter of taste. For this choice,
+masses between the range of $298\;\text{GeV}$ and $1460\;\text{GeV}$ are
+excluded \cite{hh4b_resonant}.
 
 \newpage
 \subsection{My Contributions}
@@ -669,13 +708,96 @@ forward neural net. The final results are summarized in Figure \ref{}
 \caption{My contributions}
 \label{fig:my_contributions}
 \end{figure}
+Hypothesis testing requires a signal. Therefore, first steps in my contribution
+to this analysis were with respect to signal production. Signal production is
+generally handled by the Paricle Modelling Group (PMG) within the
+collaboration. Old signal production files existed in the archived PMG central
+GitLab repository and thus I was able to use a baseline production file. There
+were some simple modifications required in order to scale the signal mass width.
+Spin-2 graviton signals were produced with MadGraph5, and particle showers
+simulated with Pythia 8. The truth Monte-Carlo information is then run through
+the full detector simulation with Athena. This procedure was extended to higher
+mass ranges than previous samples - 26 all together, from 300 to 6000 GeV. Steps
+in signal mass production are gradually increased over the range, which
+approximately respects the exponential decrease in background statistics
+throughout this range. The full suite of kinematic variables for both particle
+flow, and UFO jets were plotted for all mass points. These kinematics histograms
+have been inspected for deficiencies and approved by the analysis team.
 
+Monte-Carlo simulation of QCD Multijet backgrounds relies on a specific process
+in order to get a physically representative result. It is difficult to produce a
+specific number of jets at a particular $p_T$, and therefore it is more
+computationally efficient to produce the minimum number events needed and
+\textit{reweight} them, in order to get a smoothly falling $p_T$ distribution.
+This is done in ten separate ``slices'' of $p_T$. Early studies involved
+investigating the kinematic distributions of each $p_T$ slice individually as
+well as combined to ensure that we are accurately reconstructing the Monte-Carlo
+data.
 
-\lipsum[17-18]
+In addition, other early contributions to the analysis involved comparing the
+Monte-Carlo simulated backgrounds with blinded data. This involed studying all
+possible permutations of GN2X working points as well as selections, and
+investigating if there was closure for the kinematic properties. Moreover, we
+wanted to study the overall yields of Monte-Carlo in comparison with the data. Although our
+studies demonstrated that \textit{some years of data} had good agreement with
+the tighest selections, the general conclusion was that the Monte-Carlo
+backgrounds were insufficient for the analysis. The trend appeared to show that
+recent data taking years are better with respect to both shape and yields.
+However, our results are unsurprising, as it is generally known within ATLAS
+that multijet backgrounds are not well modelled due to the intrinsic
+complexity of quantum chromodynamic processes.
+
+As we are primarily studying two jets for the boosted analysis, a central tool
+for making region of interest selections comes from studying \textit{the mass
+plane} formed with the two jets. As our ROI selections are simply a function of
+jet mass, producing mass plane plots is important to visualizing, understanding,
+and optimizing our signal region definitions. Thus far I've written analysis
+code to produce these two dimensional histograms and superimpose the signal
+region selections. These roi selections are still being studied as to what will
+provide the optimal sensitivity.
+The current strategy for ROI is based on the Vector Boson Fusion (VBF) paper
+\cite{vbf_hh4b}.
+\begin{align}
+    SR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+    VR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+    CR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+\end{align}
+
+Crucially, I've written code to pass through the full selection pipeline for all
+the various sources of data that we have studied, namely blinded data, signal,
+monte-carlo background, and the current two candidates for background estimates.
+As each data type is loaded, cut selection efficiences are produced and saved.
+Finally, a histogram production pipeline has been produced in order to
+selectively load given data sources, make the appropriate cuts, and produce
+histograms for the signal, data and background in order to pass to the
+statistial fitting framework. This has been done with a command line interface
+
+Finally, as part of the statistical analysis, I have built a pipeline which
+takes the histograms and applies the CLS fits to produce exclusion limits.
+Unfortunately, the chosen statistical framework (Cabinetry) \cite{cabinetry}
+does not handle configurations for multiple fits for many signals. Part of my
+recent work has been building and maintaining a wrapper around the statistical
+tools such that we can adjust the configuration files on the fly, and run
+separate fitting processes for each mass point.
+
+At this point, pushing the resonant interpretation forward is primarily my
+responsibility for this analysis.
+
+% \begin{itemize}
+%     \item [x] Signal production, JIRA request, post processing
+%     \item [x] Data Monte Carlo comparisons
+%     \item [x] QCD Background vefification
+%     \item [x] Mass plane plots
+%     \item [x] Data selection pipeline and summaries
+%     \item [x] Histogram production with CLI tool
+%     \item [x] Bilding and maintining collaborative tools for stats framework
+%     \item Resonant interpretation is nearly entirely my responsibility
+% \end{itemize}
+
 \newpage
 \clearpage
 
-\subsection{Preliminary Results}
+\subsection{Preliminary Results and Ongoing Studies}
 \begin{figure}[t]
     \centering
     \begin{subfigure}[t]{.48\textwidth}
@@ -693,7 +815,20 @@ forward neural net. The final results are summarized in Figure \ref{}
 \caption{Comparison of CLS fits for Run 2 and partial Run 3 data.}
 \label{fig:cls_fit_results}
 \end{figure}
-\lipsum[20-21]
+Thus far we have put together the majority of the pipeline for the analysis.
+Preliminary studies have been done of Data/MC comparisons. Signals have been
+produced and are ready for hypothesis testing. Early background estimates are
+complete. We have studied our Signal, Validation, and Control regions through
+the 2-D mass plane and parameterized selections of the ROI. Cuts, data
+selections and working points are being investigated as to what may provide the
+optimal sensitivity for our statistical fits. Histogram overlays of signal and
+backgrounds are produced as inputs for our statistical fitting framework.
+Finally, the fitting framework is producing meaningful limits for each mass
+point. Ongoing work is being done in order to scale the signal inputs
+appropriately for each mass point such that we have a fixed production cross
+section in order to have a reference point for our cross section exclusion
+plots, produced by the CLS fitting limits. This is shown in Figure
+\ref{fig:cls_fit_results}. 
 
 \section{Conclusion}
 For this analysis, we have a very well motivated theoretical model to study. In
@@ -718,11 +853,6 @@ results were published \cite{large_r_jet}. The preliminary results are promising
 thus far, and the analysis is proceeding within a reasonable timeline for
 graduation.
 
-\section{Covered Topics (Delete me later)}
-\begin{itemize}
-    \item 
-\end{itemize}
-\newpage
 
 \newpage
 \appendix{Glossary}
@@ -843,21 +973,6 @@ graduation.
         the Randall-Sundrum Graviton signal.}
         \label{subfig:ufo_rsg_reconstruction}
     \end{subfigure} %
-    % ~
-    % \centering
-    % \begin{subfigure}[]{}
-    %     \centering
-    %     \includegraphics[width=\textwidth]{}
-    %     \caption{}
-    %     \label{}
-    % \end{subfigure}
-    % \hfill
-    % \begin{subfigure}[]{}
-    %     \centering
-    %     \includegraphics[width=\textwidth]{}
-    %     \caption{}
-    %     \label{}
-    % \end{subfigure}
 \caption{Some generic caption.}
 \label{fig:some_generic_figure}
 \end{figure}
