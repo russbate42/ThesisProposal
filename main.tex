@@ -21,6 +21,11 @@
 % Math command
 \newcommand{\pd}{\partial}
 
+% Math commands
+\newcommand{\un}[1]{\;\text{#1}}
+\newcommand{\qp}[1]{#1\overline{#1}}
+\newcommand{\qqp}[1]{#1\overline{#1}#1\overline{#1}}
+
 % Only with LaTeX-Physics
 \renewcommand{\vb}{\vectorbold}
 
@@ -36,36 +41,36 @@
 
 \newpage
 \section{Introduction}
-This article is a thesis proposal for a Doctorate of Philosophy from the
-Physics and Astronomy Department at the University of British Columbia. My
-thesis uses data from the ATLAS experiment, one of the four main experiments at
-the Large
-Hadron Collider at CERN.
-
-For the past four years I have been working with the ATLAS experiment.
-
-%% Maybe get rid of this altogether?
+This article is a thesis proposal for a Doctorate of Philosophy from the Physics
+and Astronomy Department at the University of British Columbia. The research
+presented here uses data from the Large Hadron Collider (LHC) at the European
+Organization for Nuclear Research (CERN). This proposal covers key topics
+related to my thesis. Firstly, an overview of the ATLAS detector itself, and the
+main systems involved in data taking, as well as the conditions by which the
+data was recorded. Secondly I will outline my work with the organization and
+other research projects I have been involved with thus far. Next it will cover
+the topics pertaining to my thesis, namely theoretical motivation, a brief
+outline of previous research on this topic, as well as new techniques and
+methods being applied. Finally, we will look at progress thus far in the new
+studies as well as preliminary results.
 
 \section{The ATLAS Experiment}
-The ATLAS experiment is a general purpose particle detector at the Large Hadron
-Collider (LHC) at the European Center for Nuclear Physics Research (CERN). It
-stands for \textbf{A} \textbf{T}oroidal \textbf{L}HC \textbf{A}pparatu\textbf{S}.
-The detector is named after the toroidal magnet system which is integral to the
-design and plays an important role in physical observations. ATLAS is designed
-to be a general purpose particle detector to observe collisions from the full
-LHC beam energy and intensity. It's dimensions are 44 meters across, has a
-diameter of 25 meters, and is over 7000 tonnes \cite{Aad_2024}. 
-\begin{wrapfigure}{l}{0.42\textwidth}
+The ATLAS experiment is a general purpose particle detector. It stands for
+\textbf{A} \textbf{T}oroidal \textbf{L}HC \textbf{A}pparatu\textbf{S} getting
+it's name from the toroidal magnet system which is integral to the design which
+plays an important role in physics observations. ATLAS is designed to observe
+collisions from the full LHC beam energy and intensity. The overall dimensions
+are 44 meters across, with a diameter of 25 meters, and weighs over 7000 tonnes
+\cite{Aad_2024}. \begin{wrapfigure}{l}{0.42\textwidth}
     \centering
     \includegraphics[width=0.4\textwidth]{Aerial_view_of_the_area_where_the_LHC_ring_is_located}
     \caption{Aerial view of the LHC}
     \label{fig:aerial_view}
-\end{wrapfigure}
-As a general purpose particle detector it is a composite of many different
-subdetector systems, each with their own physics objectives in mind. A brief
-overview of important subsystems are provided in the following subsections. The
-detector covers nearly the entire solid angle around the collision point
-\cite{The_ATLAS_Collaboration_2008}. 
+\end{wrapfigure} As a general purpose particle detector it is a composite of
+many different subdetector systems, each with their own physics objectives in
+mind. A brief overview of important subsystems are provided in the following
+subsections. The detector covers nearly the entire solid angle around the
+collision point \cite{The_ATLAS_Collaboration_2008}. 
 
 The LHC beam can supply protons and heavy ion nuclei at energies up to $13.6$
 TeV \ref{tab:data_taking} \cite{Aad_2024}. Particles are injected into the LHC
@@ -81,13 +86,13 @@ crossing spacing of $25$ ns. Collisions occur at the crossing point located at
 the center of the detector, and are subject to \textit{beam optics}. Beam optics
 govern the number of collisions per bunch crossing through the density of
 bunches and accuracy of the collision point. Higher beam collimation leads to
-higher instantaneous luminosity. This is parameterized at the LHC by $\beta*$
+higher instantaneous luminosity. This is parameterized at the LHC by $\beta^*$
 \cite{Aad_2024}. The many collisions that occur during a single bunch crossing
-is known as \textit{in time pile-up} and is paramaterized by $<\mu>$. This
-depends on beam conditions during each data taking year. Different data taking
-years is shown in \ref{fig:pileup}. 
+is known as \textit{in time pile-up} and is paramaterized by
+$\langle\mu\rangle$. This depends on beam conditions during each data taking
+year. Different data taking years is shown in \ref{fig:pileup}. 
 
-\subsection{Detector Subsystems}
+\subsection{Detector Subsystems} \label{sec:detector_subsystems}
 \subsubsection{Tracking and Inner Detector}
 Tracking of charged particle tracks is done as a whole with the Inner Detector
 (ID). The inner detector is a composite of subdetector systems. The inner
@@ -132,7 +137,7 @@ segmented in $r, \phi, z$ to provide position measurements. There are two
 variants of sampling calorimetry technology used - Liquid Argon (LAr) and Tiled
 Steel and Scintillator material. The LAr Calorimetry is of two varieties - Lead
 Liquid Argon, and Copper Liquid Argon. A full schematic is shown in figure
-\ref{fig:calo_schematic}
+\ref{subfig:calo_schematic}
 
 The Copper Liquid Argon is in the outer ends of the calorimeter - the Hadronic
 End Cap (HEC), and is composed of four layers. These layers are segmented
@@ -157,7 +162,7 @@ shifting optical fibers, which are ganged together into optical read out
 modules. The current produced from the modules is a highly non-linear function
 of the input light in a highly non-linear way. This is in part what makes
 hadronic calorimetry within ATLAS challenging
-\cite{The_ATLAS_Collaboration_2008}\cite{ml4p}. The Tile calo is covered by
+\cite{The_ATLAS_Collaboration_2008, ml4p}. The Tile calo is covered by
 $|\eta|<1.7$
 
 There is some compromise for the calorimetry - primarily hadronic - in the
@@ -167,42 +172,43 @@ shown in \ref{fig:calo_rapidity}.
 
 \subsubsection{Muon System}
 
-The muon system in ATLAS provides tracking and triggering on muon events. As
+The muon system in ATLAS provides tracking and triggering. As
 muons are heavy, the electromagnetic energy losses are small. Thus muons of
 sufficient energy pass through the detector without fully showering. Therefore
 the muon system is the outermost component of ATLAS and form the large outside
 structure. The muon system is composed of two main systems. The Muon Spectometer
 (MS) and the end caps. 
 
-The muon spectrometer is the outer ``barrel''. The structure is formed with
+The muon spectrometer ``barrel'' structure is formed with
 superconducting air core magnets, which produce field lines that are
 approximately concentric around the barrel. This was a design choice to produce
 fields which are approximately orthogonal to the direction of travel. Thus, this
-enables the measurement of track $p_T$ via bending as a result of the magnetic
-field. The range of $|\eta|<1.4$ is fully covered throught the barrel toroid.
-measures $p_T$ through the magnetic deflection of tracks. The outer toroid forms
-the large outside component of ATLAS and provides psuedorapidity coverage of
-$|\eta|<2.7$.
+enables the measurement of track $p_T$ via bending resulting from the magnetic
+field. The range of $|\eta|<1.4$ is fully covered throughout the barrel toroid.
+From $|\eta| < 2.7$ to $|\eta| < 1.6$, muons are deflected by magnetic fiels
+produced by end cap toroids. In between these regions, it is a combination of
+both fields. This system is composed of three layers of Monitored Drift Tubes (MDTs) in
+used to precisely measure track bending. The outer and middle layers use
+Resistive Plate Chambers (RPCs) for triggering as well as azimuthal measurements
+of the track. For $|\eta|<2.4$ the Muon Spectrometer is integrated into the
+trigger \cite{Aad_2024}.
 
-Paragraph about wheels
-
-\begin{itemize}
-    \item Thin Gap Chambers (TGCs)
-    \item MDT (?)
-    \item Resistive Plate Chambers (RPCs)
-    \item 
-\end{itemize}
-
-During Long Shutdown 2, the inner wheels were replaced with the ``New Small
-Wheels'' (NSW). This upgrade provides tracking measurements $1.3<|\eta|<2.7$. It
-is constructed with two small tric TGCs (sTGCs), and Micromegas micromesh
-technology. Both are capable fo tracking measurements, and lowered the $p_T$
-resolution. In addition, this upgrade significantly reduced the read
-out, which was necessary for higher luminosity data taking. Namely, the L1 rate
-was reduced - which will be covered in Section \ref{sec:tdaq}.
+As part of the coverage of the Muon Spectrometer, there are two large end cap
+``wheels.'' Each wheel is constructed from an outer, middle, and inner
+component. Outer wheels have only MDTs, while the middle wheels have both RPCs
+and MDTs. The innermost wheel has been upgraded during LS2, primarily to reduce
+the trigger rate, but has the added belefit of lowering the $p_T$ resolution
+threshhold, as well as adding precision tracking measurements. The lowered
+trigger rate (L1) was necessary for higher luminosity data taking. More detail
+on triggering and rates is described in Section \ref{sec:tdaq}. It
+is equipped with Thin Gap Chambers (TGSs) as well as small Thin Gap Chambers
+(sTGCs). In addition, micro-mesh (Micromegas) technology is also implemented.
+They are now known colloquially as the ``New Small Wheels'' (NSW). The NSW is
+housed between the cryostats of the end cap calorimeter and the end cap toroid,
+and provides tracking for the range of $1.3<|\eta|<2.7$. 
 
 \subsubsection{ATLAS TDAQ}\label{sec:tdaq}
-Recording is handled by the Trigger and Data AQuisition system (TDAQ). The
+Recording is handled by the Trigger and Data Aquisition system (TDAQ). The
 amount of data ATLAS can record exceeds the ability process, stream, and store
 it. Furthermore, not all bunch collisions produce physics of interest to
 analysis groups. This is why we require a trigger system. This system is
@@ -218,17 +224,17 @@ designed to handle stream rates of 100 kHz, with an additional 20\% contingency.
 Thus the overall requirement of the L1 trigger system is to take events at 40
 MHz, and selectively trigger on interesting physics events at a rate of 100 kHz.
 
-The HLT decisions are made with a CPU farm of (fix me) thousands of CPUs. The
-goal is to reconstruct physics observables as closely as possible to offline
-selection and reconstruction. The HLT event processing time for an instantaneous
-luminosity of $\mathscr{L} = 2\times 10^{34}\;cm^{-2}s^{-1}$ is approximately
-400 ms.  Average event sizes at a pileup of $<\mu> \approx 60$ are 2.1 MB. The
-HLT has a maximum allowable rate of 5 kHz. The limitation on recording is the
-data throughput, at 8 Gb/s. Thus the goal is to have an average HLT output rate
-of 3 kHz, which produces 6.3 GB/s of output, with a maximum allowable output of
-5 kHz.
+The HLT decisions are made with a CPU farm of approximately forty thousands CPUs
+\cite{HLT_2016}. The goal is to reconstruct physics observables as closely as
+possible to offline selection and reconstruction. The HLT event processing time
+for an instantaneous luminosity of $\mathscr{L} = 2\times
+10^{34}\;cm^{-2}s^{-1}$ is approximately 400 ms.  Average event sizes at a
+pileup of $\langle\mu\rangle \approx 60$ are 2.1 MB. The HLT has a maximum
+allowable rate of 5 kHz. The limitation on recording is the data throughput, at
+8 Gb/s. Thus the goal is to have an average HLT output rate of 3 kHz, which
+produces 6.3 GB/s of output, with a maximum allowable output of 5 kHz.
 
-A schematic of the TDAQ system is given in \ref{fig:tdaq_schematic}.
+A schematic of the TDAQ system is given in \ref{subfig:daq_schematic}.
 
 
 \subsection{Data Taking and Conditions}
@@ -257,7 +263,7 @@ During Run 2, ATLAS reached a peak \textit{instantaneous} luminosity of
 $\mathscr{L} = 2.1\times 10^{34} \;\text{cm}^{-2}\text{s}^{-1}$. Average
 interactions per bunch crossing are 33.7 although this changed year over year
 \ref{fig:bunch_crossings}. Heavy ion data is not discussed here but can be found
-in references \cite{The_ATLAS_Collaboration_2008}\cite{Aad_2024}. The fration of
+in references \cite{The_ATLAS_Collaboration_2008, Aad_2024}. The fration of
 operational channels for the end of Run 2 was $99.5\%$ for calorimetry and
 $95\%$ for tracking systems. Over eight years of data taking from the start of
 Run 1, the ATLAS data taking efficiency rose from $90\%$ to $95\%$. The fraction
@@ -274,20 +280,23 @@ injection scheme, which was changed in 2016, which was called Batch Production
 Merging and Splitting (BPMS). The result was a smaller beam size in the
 transverse plane. In 2017, the crossing angle anti-legelling scheme was
 introduced, which gradually reduced the crossing angle at the injection point as
-the bunch intensity decreased. In 2018, this was augmented with a $\beta*$
+the bunch intensity decreased. In 2018, this was augmented with a $\beta^*$
 anti-levelling scheme, which gave an approximate $15\%$ additional squeeze at
 the injection point at the end of each fill. The result of both schemes inreased
 the integrated luminosity without increasing the peak instantaneous luminosity
 by running for longer near the peak instantaneous luminosity \cite{Aad_2024}.
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \centering
-    \includegraphics[width=0.5\textwidth]{atlas_schematic}
-    \caption{Schematic of the ATLAS detector.}
-    \label{fig:atlas_schematic}
-\end{wrapfigure}
+The data used in this thesis are with the detector configuration outlined in
+sections \ref{sec:detector_subsystems}. The integrated luminosity recorded is
+shown in Figure \ref{fig:lhc_luminosity}.
 
-\newpage
+% \begin{wrapfigure}{r}{0.5\textwidth}
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{atlas_schematic}
+%     \caption{Schematic of the ATLAS detector.}
+%     \label{fig:atlas_schematic}
+% \end{wrapfigure}
+
 \begin{figure}[t!]
     \centering
     \begin{subfigure}[t]{.48\textwidth}
@@ -303,8 +312,10 @@ by running for longer near the peak instantaneous luminosity \cite{Aad_2024}.
         \caption{Luminosity collected from the partial LHC Run 3.}
         \label{subfig:lumi_run3}
     \end{subfigure}
-\caption{Luminosity delivered to ATLAS from the LHC for the duration of data taking for the hh4b analysis.}
-\label{figure:lhc_luminosity}
+\caption{Luminosity delivered to ATLAS from the LHC for the duration of data
+taking for the analysis - that is, Full Run 2 data at $\sqrt{s}=13\un{TeV}$, and
+partial Run 3 at $\sqrt{s}=13.6\un{TeV}$.}
+\label{fig:lhc_luminosity}
 \end{figure}
 
 \section{Research Contributions to ATLAS}
@@ -318,15 +329,17 @@ with the primary goal in mind of reconstructing fundamental interactions, we
 seek to accurately reconstruct the total energy of particle showers, henceforth
 referred to as \textit{jets}. The Machine Learning for Pions project had a goal
 of investigating if machine learning techniques could improve not only energy
-reconstruction but also incident particle classification as well. This was done
-with Pions due the fac tthat as a light hadron, they are produced in abundance
-at the LHC and are a primary reconstruction object within a jet. This research
-project was largely a success, demonstrating that deep learning was able to
-better reconstruct energies of jet substructure elements when compared with the
-standard technique used within ATLAS of Local Cell Weighting (LCW). Moreoever,
-we were able to demonstrate the use of complimentary information from the
-detector performed better than using this information on an individual basis.
-See the appendix \ref{subfig:complimentarity} for the relevant plot.
+reconstruction but also incident particle classification as well
+\cite{ml4p_prelim}. This was done with Pions due the fact that as a light
+hadron, they are produced in abundance at the LHC and are a primary
+reconstruction object within a jet. This research project was largely a success,
+demonstrating that deep learning was able to better reconstruct energies of jet
+substructure elements when compared with the standard technique used within
+ATLAS of Local Cell Weighting (LCW). Moreoever, we were able to demonstrate the
+use of complimentary information from the detector performed better than using
+this information on an individual basis \cite{ml4p}. See the appendix
+\ref{subfig:complimentarity} for the relevant plot, demonstrating subdetector
+complementarity.
 
 \subsection{Time at CERN}
 During my PhD I was given the opportunity to travel to the LHC and work on site
@@ -339,7 +352,9 @@ and the Trigger Shifter. The Run controller is responsible for starting and
 stopping data daking runs, and choosing which subcomponents of the detector are
 involved in recording data. The trigger shifter is responsible for monitoring
 data rates, CPU processing usage, and controlling which events we will record,
-as dictated by the \textit{trigger menu}.
+as dictated by the \textit{trigger menu}. As a result, I actively took part in
+data taking for some of the data used in this analysis, as shown in Figure
+\ref{fig:lhc_luminosity}.
 
 \subsection{Authorship Qualification Project}
 Active collaborators with the ATLAS experiment must complete some task that is
@@ -354,31 +369,31 @@ main sources of fake jets. These are calorimetry noise, beam induced background
 remove these events, we make cuts based on intuitive physics. The strength of
 cuts are fixed at given \textit{working points}. It was my task to investigate
 if these cuts were working as expected for the newest software releases, and
-characterize their performance. In addition, if possible these cuts were to be
-improved upon.
+characterize their performance.
+
+% In addition, if possible these cuts were to be
+% improved upon.
 
 The performance of these cuts were suitably characterized across the geometry of
 the detector, as well as with respect to the transverse jet momentum.
 Efficiencies were studied for all working points from data from both Run 2 and
-Run 3 with Athena Release 22.
+Run 3 with Athena Release 22. The most up to date implementations were put into
+place in Athena for central data production for particle flow jets.
 
 See \ref{fig:cleaning_performance_subfigure} for the full characterization.
-\newpage
 
-\newpage
-\section{Resonant Analysis of Boosted Di-Higgs to Four Bottom Quarks}
+\section{Resonant Analysis of Boosted Di-Higgs to Four Bottom Quarks
+$hh\rightarrow b\overline{b}b\overline{b}$}
 \subsection{Theoretical Motivation}
 \begin{figure}[t]
     \centering
     \begin{subfigure}[t]{.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{RSG_resonant_modes.png}
-        \caption{
-        Visual representation of the resonant modes resulting from the solution
-        of the equation in warped extra dimensions. The resonant modes are
-        pushed out to the boundary which is the energy limit for the physics we
-        wish to study.
-        }
+        \caption{Visual representation of the resonant modes resulting from the
+        solution of the equation in warped extra dimensions. The resonant modes
+        are pushed out to the boundary which is the energy limit for the physics we
+        wish to study \cite{bsm}.}
         \label{subfig:RSG_resonant_modes}
     \end{subfigure}
     \hfill
@@ -386,72 +401,79 @@ See \ref{fig:cleaning_performance_subfigure} for the full characterization.
         \centering
         \includegraphics[width=\textwidth]{warp_factor}
         \caption{Graphic representation of the relative strength of gravity
-        spreading out at the boundary.}
+        spreading out at the boundary \cite{bsm}.}
         \label{subfig:warp_factor}
     \end{subfigure}
 \caption{}
 \label{fig:theoretical_motivation_figure}
 \end{figure}
 The Higgs boson gives us a window to probe new physics from multiple
-interpretations. There are two primary mechanisms that will be discussed.
+interpretations. There are two primary mechanisms that will be discussed here.
 However, this thesis intends to keep the search as general as possible such that
-it is as model agnostic as possible. Unless there is a search for physics that
-is extremely well motivated, it is always best to keep the search as model
-agnostic as possible. The Higgs Boson is an interesting particle to do a model
-agnostic search because there is such a rich ecosystem of physics beyond the
-standard model that can (\textit{and should}) in principle couple to the higgs.
-It is in the experimentalists best interests with respect to time and energy
-investment to perform a search that can capture as much of this ecosystem as
-possible. With that in mind, there is such an idea that has not yet been ruled
-out experimentally and is very well motivated by one of the largest questions in
-theoretical physics. That is, namely the \textit{big hierarchy problem}. As we
-shall see, the phenomenology of such a model couples to the Higgs. Thus, as a
-primary goal the aim is to search for the resulting particle.
+it is as model agnostic as possible. Unless there is a search for new physics
+that is extremely well motivated, it is in the experimentalists best interest to
+keep the search as model agnostic as possible. The Higgs Boson is an interesting
+particle to do a model agnostic search because there is such a rich ecosystem of
+physics beyond the standard model that can \textit{and should} in principle
+couple to the higgs. It is a worthwhile endeavour to do the broadest search
+possible in order to capture as much of this ecosystem at once. With that in
+mind, there is such an idea that has not yet been ruled out experimentally and
+is very well motivated by one of the largest questions in theoretical physics.
+That is, \textit{big hierarchy problem}. Namely, \textit{why is gravity so weak
+in comparison with other forces?}. The theoretical construct in question is that
+of \textit{Extra Dimensions} (ED). This idea is not new, and in fact has been
+around for a long time, since the 1920s. A phenomelogical consequence of extra
+dimensions is a spin-2 graviton which under no other assumptions can couple to
+the Higgs boson \cite{bsm}.  
 
-The phenomenology in question is that of \textit{extra dimensions}. This idea is
-not new, and in fact has been around for a long time, since the 1920s. There are
-different, yet equally valid geometric configurations that one can come up with
-in order to add dimensions. For simplicity, we will discuss 5-D goemetries where
-we have four spatial dimensions and one of time. Extra dimensional models can of
-course be extendid in the same way much beyond this but for now we will stick
-with the simplest case.
+The obvious extension is that of flat extra dimensions. It is easy to extend
+flat Minkowski space by describing the metric as $\eta = (-1,1,1,1,1)$. However,
+one of the consequences of having large flat extra dimensions is that we may
+expect some deviations from the inverse square law of gravity \cite{}. Some
+experiments have been devised to measure this deviation at small scale, and a
+large amount of phase space has been ruled out \cite{bsm}. However, this is
+dependent upon the number of extra dimensions. If we add extra dimensions of
+$n\geq 2$, it is still possible to provide some natural explanation for the
+hierarchy problem. Gravity is weak in comparison to Electro-Weak (EW) forces,
+because EW is confined to the three spatial dimensions, and the graviton is able
+to propagate in some higher dimensional manifold. These are known as as Large
+Extra Dimension (LED), or Arkani-Hamed, Dimopoulos, Dvali (ADD) models
+\cite{Arkani_Hamed_1998, Arkani_Hamed_1999}. 
 
-The obvious extension is that of flat extra dimensions. Say more about flat
-extra dimensions
+It is not difficult to imagine a slightly more complex geometry where instead of
+additional flat dimensions we can add some curvature. One way to achieve this is
+to simply form a closed loop with one of the dimensions. This process is
+generally referred to as \textit{compactification}. In the most simple case of a
+compactified dimension, due to the closed loop, this creates a closed boundary
+condition. As a result, resonance can occur with higher order excitations of
+fields on this manifold. This is effectively the signature which we can search
+for, and we can do so through probing physics at the highest energies accessible
+to us. One new twist that has been added to this idea is that the dynamics are
+modified as a parameter of the extra dimension. This was proposed by Lisa
+Randall and Raman Sundrum, and is called the Randall-Sundrum geometry
+\cite{RandallSundrumOriginal, bsm}. There are two distinct configurations of
+this geometry each with their own phenomenological consequences, commonly
+referred to as \textit{RS1} and \textit{RS2}.
 
-A slightly more complex geometry is that of a curled extra dimension. The
-important features of this model are that the four ``normal'' dimensional space
-form flat Minkowski space, and the extra spatial dimension forms a closed loop.
-This creates a closed boundary condition, which allow for resonances.
-
-One new twist that has been added to this idea is that the dynamics are modified
-as a parameter of the extra dimension. This was proposed by Lisa Randall and X
-Sundrum, and is called the Randall-Sundrum geometry. There are two distinct
-configurations of this geometry each with their own phenomenological
-consequences. As we shall see from investigating the 5-D action potential, the
-reasons for this being an interesting theory to investigate are twofold. For
-one, it can provide a natural explanation for that hierarchy problem. That is,
-why is gravity so weak in comparison to other forces? Also, we will see that
-this model predicts resonant modes that are not evenly spaced out, but rather
-bunched together closer to the standard model energies.
-
-The five dimensional action potential can be expressed as the following
-\begin{equation}
-    S_{\text{Higgs}} = \int
-    \dd[4]{x}\sqrt{-g^{(2)}} \left[g^{(2)\mu\nu}\pd_\mu\pd^\nu \right]
-\end{equation}
 
 \subsection{Boosted Topology}
 Heavy particles will decay to highly energetic states due to mass energy
 equivalence. For a di-Higgs state, this means each higgs will have high
 momentum. The highest branching fraction for the higgs is approximately 57\% to
 bottom quarks. Therefore, with the final state of two bottom quarks, the two b
-quarks will subsequently have high momentum also. Thus, for a heavy resonant
+quarks will subsequently also have high momentum. Thus, for a heavy resonant
 search, we seek a topology with two bottom quarks kinematically favoring the
 direction of the boosted higgs. At a certain energy, the b quark jets are highly
-overlaping, and they are better reconstructed as a single large radius jet with
-``two pronged'' topological characteristics. Jets selected for this purpose are
-$R=1.0$ Unified Flow Object jets \ref{ufo_jets}.
+overlapping, and they are better reconstructed as a single large radius jet with
+``two-pronged'' topological characteristics. Jets selected for this purpose are
+$R=1.0$ Unified Flow Object jets \cite{boosted_hbbcc_tagger, large_r_jet}. 
+
+The primary purpose of this analysis is to search for Heavy resonances from
+higher order excitations of the metric, or some other BSM mechanism. As such,
+the boosted topology is chosen due to the sensitivity in this region. We can see
+the sensitivity of the \textit{resolved} analysis begins to decrease at masses
+of approximately 1000-1100 GeV \cite{}. 
+
 \begin{figure}[t]
     \centering
     \begin{subfigure}[t]{.48\textwidth}
@@ -463,14 +485,14 @@ $R=1.0$ Unified Flow Object jets \ref{ufo_jets}.
     \hfill
     \begin{subfigure}[t]{.48\textwidth}
         \centering
-        \includegraphics[width=\columnwidth]{Boosted_Topology}%{Feynman Diagram}
-        \caption{Feynman diagram showing the scattering process.}
+        \includegraphics[width=\columnwidth]{G_kk_scattering}
+        \caption{Feynman diagram showing the scattering process for a Spin-2
+        reonsnance created from gluon-gluon fusion (ggF) decaying to a higgs pair.}
         \label{subfig:feynman}
     \end{subfigure}
-\caption{Showing the signal topologies}
+    \caption{Signal topology for the resonant boosted $hh\rightarrow \qqp{b}$.}
 \label{fig:signal_topologies}
 \end{figure}
-\newpage
 
 \subsection{Xbb Tagging}
 \begin{figure}[t]
@@ -612,21 +634,6 @@ side. We know that QCD is the dominant background, and this background rejection
 matters more. Given the increase in overall tagging efficiency, adding the GN2X
 to our analysis should yield more sensitive results than previos analysis.
 
-\vspace{10pt}
-DEPRECATED
-For tagging signal and discriminating background we use the state of the art
-GN2X tagger. This is a multi-headed attention network. GN2X\* is trained on
-truth boosted Xbb jets. Therefore in principle the truth information that the
-network is exposed to has the two-pronged topology. This tagger also learns the
-truth jet reconstructed mass and energy. A flaw 
-
-Finally, the results are such that accross the whole spectrum of working points
-for $H(b\bar{b})$ tagging efficiency, the GN2X algorithm outputforms the
-previous iterations of taggers. Namely the $D_Xbb$, which is simply the feed
-forward neural net. The final results are summarized in Figure
-\ref{fig:Xbb_tagger}.
-
-\newpage
 \subsection{Previous Results}
 \begin{figure}[t]
     \centering
@@ -659,10 +666,14 @@ reconstructed with Athena \cite{atlas_simulation}.
 This analysis used a different signal, control and validation region than the
 the Vector Boson Fusion (VBF) paper \cite{vbf_hh4b}, and current work. The
 selections are as follows
+
 \begin{align}
-    SR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
-    VR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
-    CR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+    SR &= \sqrt{\left( \frac{m_{H1} - 124\un{GeV}}{.1\times m_{H1} } \right)^2 +
+    \left( \frac{m_{H2} - 124\un{GeV}}{.1\times m_{H2}} \right)^2} \\
+    VR &= \sqrt{\left( m_{H1} - 124\un{GeV} \right)^2 + \left( m_{H2} -
+    124\un{GeV} \right)^2} < 33\un{GeV} \\
+    VR &= \sqrt{\left( m_{H1} - 124\un{GeV} \right)^2 + \left( m_{H2} -
+    124\un{GeV} \right)^2} < 58\un{GeV}
 \end{align}
 
 No significant excesses were observed, and there was good agreement between the
@@ -676,7 +687,7 @@ was found to be $0.4\sigma$ for the spin-0 resonance and $0.8\sigma$ for spin-2.
 
 Upper limits on produciton cross section for gluon-gluon fusion ($\sigma_{ggF}$)
 were produced based on the $CL_S$ method, set at the 95\% confidence level. The
-results can be seen in Figure \ref{fig:previous_results}. Below $3 \text{TeV}$,
+results can be seen in Figure \ref{fig:previous_results}. Below $3\un{TeV}$,
 limits are computed with asymptotic formulae. Beyond this mass point, this
 approimation is innacurate and thus limits are computed with sampleing
 psuedo-experiments. In Figure \ref{fig:previous_results}, a model with a base
@@ -685,9 +696,8 @@ the motivation is such that extra dimensions can explain the \textit{big
 hierarchy} problem with little fine tuning, and thus one would want
 \textit{natural} values. This is of course a matter of taste. For this choice,
 masses between the range of $298\;\text{GeV}$ and $1460\;\text{GeV}$ are
-excluded \cite{hh4b_resonant}.
+excluded \cite{hh4b_resonant}. 
 
-\newpage
 \subsection{My Contributions}
 
 \begin{figure}[t]
@@ -695,17 +705,19 @@ excluded \cite{hh4b_resonant}.
     \begin{subfigure}[t]{.48\textwidth}
         \centering
         \includegraphics[width=\columnwidth]{jet_reconstruction}
-        \caption{Mass reconstructrion of large radius jets from the Randall-Sundrum graviton sample.}
+        \caption{Truth jet mass for large radius jets, reconstructed from
+        simulated Run 3 events at $\sqrt{s}=13.6\un{TeV}$.}
         \label{subfig:jet_reconstruction}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.48\textwidth}
         \centering
         \includegraphics[width=\columnwidth]{boosted_m_hh-2023-ROI_incl_SR-2tag_wp85}
-        \caption{Input histograms for the statistical fits.}
+        \caption{Input histograms for the statistical fitting, showing only a
+        select group of mass points for visual purposes.}
         \label{subfig:input_hists}
     \end{subfigure}
-\caption{My contributions}
+    \caption{Randall-Sundrum graviton signal.}
 \label{fig:my_contributions}
 \end{figure}
 Hypothesis testing requires a signal. Therefore, first steps in my contribution
@@ -754,18 +766,25 @@ jet mass, producing mass plane plots is important to visualizing, understanding,
 and optimizing our signal region definitions. Thus far I've written analysis
 code to produce these two dimensional histograms and superimpose the signal
 region selections. These roi selections are still being studied as to what will
-provide the optimal sensitivity.
-The current strategy for ROI is based on the Vector Boson Fusion (VBF) paper
+provide the optimal sensitivity. The current strategy for ROI is based on the
+Vector Boson Fusion (VBF) paper
 \cite{vbf_hh4b}.
+
 \begin{align}
-    SR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
-    VR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
-    CR &= \sqrt{\left(  \right)^2 + \left(  \right)^2} \\
+    SR &= \sqrt{\left( \frac{m_{H1}-124\;\text{GeV}}{1500\;\text{GeV}/m_{H1}}
+    \right)^2 + \left( \frac{m_{H2}-117\;\text{GeV}}{1900\;\text{GeV}/m_{H2}}
+    \right)^2} < 1.6 \un{GeV} \\
+    VR &= \sqrt{\left( \frac{m_{H1}-124\;\text{GeV}}{.1\ln(m_{H1}/\;\text{GeV})}
+    \right)^2 + \left( \frac{m_{H2}-117\;\text{GeV}}{.1\ln(m_{H2}/\;\text{GeV})}
+    \right)^2} < 100 \un{GeV} \\
+    CR &= \sqrt{\left( \frac{m_{H1}-124\;\text{GeV}}{.1\ln(m_{H1}/\;\text{GeV})}
+    \right)^2 + \left( \frac{m_{H2}-117\;\text{GeV}}{.1\ln(m_{H2}/\;\text{GeV})}
+    \right)^2} < 170 \un{GeV}
 \end{align}
 
 Crucially, I've written code to pass through the full selection pipeline for all
 the various sources of data that we have studied, namely blinded data, signal,
-monte-carlo background, and the current two candidates for background estimates.
+Monte-Carlo background, and the current two candidates for background estimates.
 As each data type is loaded, cut selection efficiences are produced and saved.
 Finally, a histogram production pipeline has been produced in order to
 selectively load given data sources, make the appropriate cuts, and produce
@@ -793,9 +812,6 @@ responsibility for this analysis.
 %     \item [x] Bilding and maintining collaborative tools for stats framework
 %     \item Resonant interpretation is nearly entirely my responsibility
 % \end{itemize}
-
-\newpage
-\clearpage
 
 \subsection{Preliminary Results and Ongoing Studies}
 \begin{figure}[t]
@@ -853,26 +869,28 @@ results were published \cite{large_r_jet}. The preliminary results are promising
 thus far, and the analysis is proceeding within a reasonable timeline for
 graduation.
 
-
+\clearpage
 \newpage
-\appendix{Glossary}
 \section{Glossary}
-\subsection{Acronyms}
-\acronym{AI}{Artificial Intelligence}
+% \subsection{Acronyms}
+% \acronym{AI}{Artificial Intelligence}
 
-\acronym{GPU}{Graphics Processing Unit}
+% \acronym{GPU}{Graphics Processing Unit}
 
-\acronym{ML}{Machine Learning}
+% \acronym{ML}{Machine Learning}
 
-\subsection{Terms}
-\term{Algorithm}{A step-by-step procedure for solving a problem}
+% \subsection{Terms}
+% \term{Algorithm}{A step-by-step procedure for solving a problem}
+%
+% \term{Database}{A structured collection of data}
+%
+% \term{Variable}{A symbol that represents a value that can change}
 
-\term{Database}{A structured collection of data}
-
-\term{Variable}{A symbol that represents a value that can change}
-
-\appendix{Machine Learning for Pions}
-\begin{figure}[t]
+\clearpage
+\newpage
+\appendix{}
+\section{Machine Learning for Pions}
+\begin{figure}[h]
     \centering
     \begin{subfigure}[t]{.48\textwidth}
         \centering
@@ -891,8 +909,11 @@ graduation.
 \caption{Main results from the machine learning for pions project.}
 \label{fig:ml4p_main_results.}
 \end{figure}
-\appendix{The ATLAS Detector}
-\begin{figure}[t]
+
+\clearpage
+\newpage
+\section{The ATLAS Detector}
+\begin{figure}[h]
     \centering
     \begin{subfigure}[t]{.48\textwidth}
         \centering
@@ -919,68 +940,78 @@ graduation.
     \begin{subfigure}[t]{.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Muon_System}
-        \caption{Calorimetry System.}
+        \caption{Muon System.}
         \label{subfig:muon_system_schematic}
     \end{subfigure}
 \caption{Schematics for the ATLAS detector main subsystems \cite{Aad_2024}.}
 \label{fig:ATLAS_Schematics}
 \end{figure}
 
-\newpage
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{ATLAS_DAQ}
-    \caption{ATLAS DAQ overview. \cite{Aad_2024}}
+    \caption{ATLAS DAQ overview \cite{Aad_2024}.}
     \label{fig:daq_schematic}
 \end{figure}
 
-\newpage
 
-\appendix{Qualification Project}
-\begin{figure}[t]
+\clearpage
+\newpage
+\section{Qualification Project}
+\begin{figure}[h]
     \centering
-    \begin{subfigure}[t]{.45\textwidth}
+    \begin{subfigure}[t]{.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{GoodJets_FracSamplingMax_EMFrac}
-        \caption{Cleaning performance mapped with respect to pt and some other stuff.}
-        \label{subfig:tight_th2}
+        \caption{Balanced di-jet sample showing physics of well behaved jets.}
+        \label{subfig:good_jets_th2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{.45\textwidth}
+    \begin{subfigure}[t]{.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{FakeJets_FracSamplingMax_EMFrac}
-        \caption{Cleaning performance mapped with respect to pt and some other stuff.}
-        \label{subfig:tenacious_th2}
-    \end{subfigure} %
-\caption{Jet Cleaning figures}
-\label{fig:cleaning_performance_subfigure}
-\end{figure}
-
-\appendix{Boosted Resonant Di-Higgs to Four b}
-\begin{figure}[t]
-    \centering
-    \begin{subfigure}[t]{.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{graviton_overlay}
-        \caption{figure caption}
-        \label{subfig:graviton_overlay}
+        \caption{Fake jet enriched sample demonstrating a strong bias towards
+        distribution tails.}
+        \label{subfig:fake_jets_th2}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{jet_reconstruction}
-        \caption{Reconstructed jet mass for large radius (R=1.0) UFO jets from
-        the Randall-Sundrum Graviton signal.}
-        \label{subfig:ufo_rsg_reconstruction}
-    \end{subfigure} %
-\caption{Some generic caption.}
-\label{fig:some_generic_figure}
+    \caption{Example of correlations between cleaning variables for balanced
+    di-jets and the enriched fake jet sample.}
+\label{fig:cleaning_variables}
 \end{figure}
 
+\section{Boosted Resonant Di-Higgs to Four b}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graviton_overlay}
+    \caption{Spin-2 resonance shown with all mass points. The summation is shown
+    in black. It is clear that there is sufficient overlap between the mass
+    points to cover the intended search range.}
+    \label{fig:graviton_overlay}
+\end{figure}
+% \begin{figure}[h]
+%     \centering
+%     \begin{subfigure}[t]{.48\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{graviton_overlay}
+%         \caption{figure caption}
+%         \label{subfig:graviton_overlay}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[t]{.48\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{jet_reconstruction}
+%         \caption{Reconstructed jet mass for large radius (R=1.0) UFO jets from
+%         the Randall-Sundrum Graviton signal.}
+%         \label{subfig:ufo_rsg_reconstruction}
+%     \end{subfigure} %
+% \caption{Some generic caption.}
+% \label{fig:some_generic_figure}
+% \end{figure}
+
+\clearpage
 \newpage
-\newpage
-\appendix{Derivation of RS Model}
-\section{Dynamics in Four Dimensions}
+\section{Derivation of RS Model}
+\subsection{Dynamics in Four Dimensions}
 First let use make some fundamental observations about allowing for extra
 dimensions. Momentum in a five (or higher) dimensional spacetime can show up as
 extra mass in four-space. 
@@ -1048,7 +1079,7 @@ have $$m^2 = m_0^2 + \frac{n_5^2}{R_5^2}$$. Notice that for large $\frac{n}{R}$
 we will have no access to observe these terms. The possible mass terms that are
 accessible with accelerator energies depend on $\frac{n}{R}$.
 
-\section{RS1}
+\subsection{RS1}
 We start with the effective four dimensional higgs action
 \begin{equation}
     S_{Higgs} = \int \dd[4]{x}\sqrt{-g^{(2)}} \left[ g^{(2)\mu \nu} \pd_\mu H
@@ -1081,7 +1112,7 @@ factor, that is
     v \equiv e^{-k\pi R}v_0
 \end{equation}
 
-\section{RS2}
+\subsection{RS2}
 In the RS2 scenario, we can show that the ``compactification'' of the extra
 dimension need not be constrained to a finite radius and thus finite volume.
 This scenario has a different setup, that the IR brane is located at $\pi R$,
@@ -1116,7 +1147,7 @@ What we see from this result is that even if we extend the radius out to
 infinity, we have a well defined Planck mass. Thus we have a coherent physical
 theory with extra dimensions of infinite volume. 
 
-\section{Gravitons in Extra Dimensions}
+\subsection{Gravitons in Extra Dimensions}
 The gravitational wave equation $h_{MN}$ is the same for massless 5-D scalar
 except for the normalization factor.
 \begin{align}
@@ -1151,9 +1182,10 @@ potential
 The resonant modes solving this potential are shown in Figure
 \ref{subfig:RSG_resonant_modes}.
 
-%N% BIBLIOGRAPHY
+
+%% BIBLIOGRAPHY
 \newpage
-\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliographystyle{unsrt}
 \bibliography{bibliography}
 
 \end{document}
