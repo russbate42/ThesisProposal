@@ -13,6 +13,9 @@ main.synctex.gz
 pdflatex44676.fls
 main.fdb_latexmk
 main.pdf
+main_compressed.pdf
+main*.pdf
+*.pdf
 
 # Project notes
 notes.md
