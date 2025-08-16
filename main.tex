@@ -31,11 +31,11 @@ This article is a thesis proposal for a Doctorate of Philosophy from the Physics
 and Astronomy Department at the University of British Columbia. The research
 presented here uses data from the Large Hadron Collider (LHC) at the European
 Organization for Nuclear Research (CERN). This proposal covers key topics
-related to my thesis. Firstly, a terse outline of the ATLAS detector will be
+related to my thesis. Firstly, a short outline of the ATLAS detector will be
 given as it pertains to the recorded data used in the research discussed here.
 Secondly I will outline my work with the organization and other research
-projects I have been involved with thus far. Next it will cover the topics
-pertaining to my thesis, namely theoretical motivation, a brief outline of
+projects I have been involved with thus far. Next I will cover the topics
+specific to my thesis, namely theoretical motivation, a brief outline of
 previous research on this topic, as well as new techniques and methods being
 applied. We will look at progress thus far in the new studies as well
 as preliminary results. Finally, an outline is made of the proposed timeline for
@@ -54,7 +54,7 @@ are 44 meters across, with a diameter of 25 meters, and weighs over 7000 tonnes
     \caption{Aerial view of the LHC, located in Geneva, Switzerland.}
     \label{fig:aerial_view}
 \end{wrapfigure} As a general purpose particle detector it is a composite of
-many different subdetector systems, each with their own physics objectives in
+many different sub-detector systems, each with their own physics objectives in
 mind. The detector covers nearly the entire solid angle around the
 collision point \cite{The_ATLAS_Collaboration_2008}. 
 
@@ -62,7 +62,7 @@ The LHC beam can supply protons and heavy ion nuclei at energies up to $13.6$
 TeV \cite{Aad_2024}. Particles are injected into the LHC ring in bunches and are
 held in place with Radio Frequency (RF) electric fields
 \cite{bunch_filling_schemes_bailey}. When injections are complete, the beam
-energy is slowly ramped up to target operational energies. Bunches are guided
+energy is slowly increased to target operational energies. Bunches are guided
 around the LHC ring with dipole magnets \cite{The_ATLAS_Collaboration_2008,
 bunch_filling_schemes_bailey}. At these energies, particles are highly Lorentz
 boosted, and have a bunch crossing spacing of $25$ ns. Collisions occur at the
@@ -123,7 +123,7 @@ partial Run 3 at $\sqrt{s}=13.6\un{TeV}$.} %(cite me)
 
 \subsection{Machine Learning for Pions}
 My first research project within ATLAS as with the Machine Learning for Pions
-project. At ATLAS, an inportant step in physics analysis is the reconstruction
+project. At ATLAS, an important step in physics analysis is the reconstruction
 of incident particle energy. One decay mechanism for a particle with some high
 initial energy is to form energetic particle showers within the detector. Thus
 with the primary goal in mind of reconstructing fundamental interactions, we
@@ -136,7 +136,7 @@ hadron, they are produced in abundance at the LHC and are a primary
 reconstruction object within a jet. This research project was largely a success,
 demonstrating that deep learning was able to better reconstruct energies of jet
 substructure elements when compared with the standard technique used within
-ATLAS of Local Cell Weighting (LCW) \cite{ml4p}. Moreoever, we were able to
+ATLAS of Local Cell Weighting \cite{ml4p}. Moreoever, we were able to
 demonstrate that the use of complimentary information from the detector
 subsystems performed better than using this information on an individual basis
 \cite{ml4p}.
@@ -152,8 +152,8 @@ part in underground visits to see the ATLAS detector in person. Beyond seeing
 the detector in person, I was able to get trained and take shifts in the ATLAS
 control room. My responsibilities involved two positions, the Run Controller,
 and the Trigger Shifter. The Run controller is responsible for starting and
-stopping data daking runs, and choosing which subcomponents of the detector are
-involved in recording data. The trigger shifter is responsible for monitoring
+stopping data taking runs, and choosing which sub-components of the detector are
+involved in recording data. The Trigger Shifter is responsible for monitoring
 data rates, CPU processing usage, and controlling which events we will record,
 as dictated by the \textit{trigger menu} \cite{trigger_2017, HLT_2016}. As a
 result, I actively took part in data taking for some of the data used in this
@@ -187,7 +187,7 @@ is deposited horizontally within the detector, there is a higher likelihood that
 it came from beam induced background which are approximately parallel with the
 beam axis. Early cleaning cuts were developed based on known hardware issues
 such as calorimetry noise. Due to the types of selections that are being made
-and the instrinsic difficulty of the problem, there is considerable room for
+and the intrinsic difficulty of the problem, there is considerable room for
 optimization. 
 
 \begin{figure}[t!]
@@ -228,7 +228,7 @@ rates for the tight working point.}
 \label{fig:jet_cleaning}
 \end{figure}
 Optimization studies were performed by searching for ``bumps'' in
-distribution tails. In order to aid these studies, two important subsamples of
+distribution tails. In order to aid these studies, two important sub-samples of
 collision data were created. Firstly, we look at kinematically balanced di-jet
 samples. There is no guarantee that all events in this sample are from $pp$
 scattering events, however due to the nature of the selections we can assume a
@@ -246,10 +246,10 @@ First, we measure the cut efficiency using the balanced di-jet sample. This is
 done with the \textit{tag and probe} method. Simply put, tag and probe relies on
 the assumption that in our balanced di-jet sample, if the leading $p_T$ jet is a
 fake, so too is it's counterpart. Applying cleaning cuts to the balanced di-jet
-sample on \textit{both} leading \textit{and} subleading jets, denominated by
-cuts applied to \textit{only} leading \textit{or} subleading, yields an
+sample on \textit{both} leading \textit{and} sub-leading jets, denominated by
+cuts applied to \textit{only} leading \textit{or} sub-leading, yields an
 approximation for efficiency. Secondly we measure the number of jets rejected
-from the fakes, keeping in mind that the degree of purity is unkown, and
+from the fakes, keeping in mind that the degree of purity is unknown, and
 therefore rejecting more fakes is not necessarily better.  
 
 Three working points for these cuts are chosen - loose, tight, and tenacious -
@@ -265,17 +265,17 @@ $hh\rightarrow b\overline{b}b\overline{b}$}
 
 The Higgs boson is an interesting particle to perform direct searches with
 because there is such a rich ecosystem of physics beyond the standard model that
-can \textit{and should} in principle couple to the higgs. In general, unless
+can \textit{and should} in principle couple to the Higgs. In general, unless
 there is a specific search that is extremely well motivated, it is a worthwhile
 endeavour to do the broadest search possible in order to capture as much of this
-ecosystem at once. Therefore, it is in the experimentalists best interest to
+ecosystem at once. Therefore, it is in the experimentalist's best interest to
 keep any direct search as model agnostic as possible. With that in mind, there
 is such an idea that has not yet been ruled out experimentally and is very well
 motivated by one of the largest questions in theoretical physics. That is,
 \textit{big hierarchy problem}. Namely, \textit{why is gravity so weak in
 comparison with other forces?}. The theoretical construct in question is that of
 Extra Dimensions. This idea is not new, and in fact has been around for a long
-time, since the 1920s \cite{KALUZA_2018}. A phenomelogical consequence of extra
+time, since the 1920s \cite{KALUZA_2018}. A phenomenological consequence of extra
 dimensions is a spin-2 graviton which under no other assumptions can couple to
 the Higgs boson \cite{bsm}.  
 
@@ -326,7 +326,7 @@ manifold.
 
 % Maybe swap these two paragraphs
 First let us make some fundamental observations about allowing for extra
-dimensions. Momentum in a five (or higher) dimensional spacetime can show up as
+dimensions. Momentum in a five (or higher) dimensional space-time can show up as
 extra mass in four-space \cite{KALUZA_2018, bsm}. 
 \begin{align}
     E = \sqrt{\vb{p}^2 + p_5^5 + m^2} \\
@@ -334,8 +334,8 @@ extra mass in four-space \cite{KALUZA_2018, bsm}.
 \end{align}
 Crucially, this is only the case for particles which have access to the 5-D
 bulk. Standard model particles are restricted to three spatial dimensions.
-Solving for the 5-D action potenial of a scalar particle on the simple
-compactified 5-D manifold configuration, and allowing the wavefunction to be
+Solving for the 5-D action potential of a scalar particle on the simple
+compactified 5-D manifold configuration, and allowing the wave-function to be
 periodic, allows for distinct resonant modes to form. Namely, we have
 \begin{equation}
     m^2 = m_0^2 + \frac{n_5^2}{R_5^2}
@@ -351,7 +351,7 @@ as a parameter of the extra dimension. This term is known as a \textit{warp
 factor}. What is compelling about this configuration, is the answer to the
 hierarchy problem to modifying the relative strength of the dynamics, depending
 on the local position on the manifold. It can be shown that gravity is
-\textit{spread out} at the the scale of the standard model. A visual
+\textit{spread out} at the scale of the standard model. A visual
 representation of this is shown in Figure \ref{subfig:warp_factor}. This was
 proposed by Lisa Randall and Raman Sundrum, and is called the Randall-Sundrum
 geometry \cite{RandallSundrumOriginal, bsm}.
@@ -373,7 +373,7 @@ momentum. The highest branching fraction for the Higgs is approximately 57\% to
 bottom quarks. Therefore, with the final state of two bottom quarks, the two b
 quarks will subsequently also have high momentum. Thus, for a heavy resonant
 search, we seek a topology with two bottom quarks kinematically favoring the
-direction of the boosted higgs. At a certain energy, the b quark jets are highly
+direction of the boosted Higgs. At a certain energy, the b-quark jets are highly
 overlapping, and they are better reconstructed as a single large radius jet with
 ``two-pronged'' topological characteristics. Jets selected for this purpose are
 $R=1.0$ Unified Flow Object jets \cite{boosted_hbbcc_tagger, large_r_jet}. A
@@ -413,7 +413,7 @@ For this analysis, it is crucially important to identify $H\rightarrow b\bar{b}
 / c\bar{c}$ processes. For this purpose, we leverage the ATLAS GN2X neural net
 for identifying large radius jets in the boosted regime. This model has been
 able to improve tagging considerably over the previous approach, which used
-flavour tagging discriminants of individual track-based subjets in a basic feed
+flavour tagging discriminants of individual track-based sub-jets in a basic feed
 forward neural net. Contrast this to the GN2X which builds upon previous results
 of Graph Neural Net (GNN) networks to tag and calibrate small radius jets, and
 adds transformer-encoder architecture.
@@ -425,7 +425,7 @@ adds transformer-encoder architecture.
 GN2X is trained with the goal of classifying large radius jets based on their
 origin, that is to discriminate $H\rightarrow b\bar{b}/c\bar{c}$ from background
 processes that could produce jets of a similar structure (and substructure).
-Backgrounds considered in training were just two - multijet and fully hadronic
+Backgrounds considered in training were just two - multi-jet and fully hadronic
 top quark decays. Examples of some substructure elements that the tagger would
 ``learn'' are topological characteristics such as displaced secondary tracks for
 b-jets. In addition it may observe the two-pronged nature of the large radius
@@ -462,20 +462,20 @@ classification.
     \label{fig:Xbb_tagger}
 \end{figure}
 
-The final results are shown in Figure \ref{fig:Xbb_tagger}. Accross the whole
+The final results are shown in Figure \ref{fig:Xbb_tagger}. Across the whole
 spectrum of tagging efficiencies the GN2X outperforms the previous tagging
 algorithm with respect to the number of backgrounds rejected
 \cite{boosted_hbbcc_tagger}. This is computed for the two main sources of
-background - Top quark and QCD multijet. If the results are normalized to the
+background - Top quark and QCD multi-jet. If the results are normalized to the
 previous benchmark - the simple feed-forward DNN, we are able to see the
 increased ratio of the background rejection for the new algorithm. From the QCD
-multijet backgorund, we see an approximately constant rejection of $2.5$ accross
+multi-jet background, we see an approximately constant rejection of $2.5$ across
 the spectrum of efficiencies. For Top quark rejection, we see a maximum at
 approximately $2.1$ at $.7$ tagging efficiency, with a slow decrease on either
 side. We know that QCD is the dominant background, and this background rejection
 matters more. Given the increase in overall tagging efficiency, adding the GN2X
 to our analysis should in principle yield considerably more sensitive results
-than previos analysis.
+than previous analysis.
 
 \subsection{Previous Results}
 \begin{figure}[t]
@@ -507,7 +507,7 @@ Spin-0 and Spin-2 samples were produced at leading order with MadGraph5
 reconstructed with ATLAS Athena software \cite{atlas_simulation}.
 
 This analysis used a different signal, control and validation region than the
-the Vector Boson Fusion (VBF) paper \cite{atlas_hhbbbb_vbf}, and current work. The
+Vector Boson Fusion (VBF) paper \cite{atlas_hhbbbb_vbf}, and current work. The
 selections are as follows
 
 \begin{align} \label{eq:vbf_sr}
@@ -528,12 +528,12 @@ $p-\text{value}$. The most significant excess is found for a signal with mass of
 1100 GeV, which had a local significance of $2.3\sigma$. The global significance
 was found to be $0.4\sigma$ for the spin-0 resonance and $0.8\sigma$ for spin-2.
 
-Upper limits on produciton cross section for gluon-gluon fusion ($\sigma_{ggF}$)
+Upper limits on production cross section for gluon-gluon fusion ($\sigma_{ggF}$)
 were produced based on the $CL_S$ method, set at the 95\% confidence level. The
 results can be seen in Figure \ref{fig:previous_results}. Below $3\un{TeV}$,
 limits are computed with asymptotic formulae. Beyond this mass point, this
-approimation is innacurate and thus limits are computed with sampleing
-psuedo-experiments. In Figure \ref{fig:previous_results}, a model with a base
+approximation is inaccurate and thus limits are computed with sampling
+pseudo-experiments. In Figure \ref{fig:previous_results}, a model with a base
 case of $k/\overline{M}_{Pl}=1$ is shown. This is an arbitrary number, however
 the motivation is such that extra dimensions can explain the \textit{big
 hierarchy} problem with little fine tuning, and thus one would want
@@ -545,7 +545,7 @@ $1460\;\text{GeV}$ are excluded \cite{atlas_resonant_2022}.
 
 Hypothesis testing requires a signal. Therefore, first steps in my contribution
 to this analysis were with respect to signal production. Signal production is
-generally handled by the Paricle Modelling Group (PMG) within the
+generally handled by the Particle Modelling Group (PMG) within the
 collaboration. Old signal production files existed in the archived PMG central
 GitLab repository and thus I was able to use a baseline production file. There
 were some simple modifications required in order to scale the signal mass width.
@@ -559,11 +559,11 @@ throughout this range. The full suite of kinematic variables for both particle
 flow, and UFO jets were plotted for all mass points. These kinematics histograms
 have been inspected for deficiencies and approved by the analysis team.
 
-Monte-Carlo simulation of QCD Multijet backgrounds relies on a specific process
+Monte-Carlo simulation of QCD multi-jet backgrounds relies on a specific process
 in order to get a physically representative result. It is difficult to produce a
 specific number of jets at a particular $p_T$, and therefore it is more
 computationally efficient to produce the minimum number events needed and
-\textit{reweight} them, in order to get a smoothly falling $p_T$ distribution.
+\textit{re-weight} them, in order to get a smoothly falling $p_T$ distribution.
 This is done in ten separate ``slices'' of $p_T$. Early studies involved
 investigating the kinematic distributions of each $p_T$ slice individually as
 well as combined to ensure that we are accurately reconstructing the Monte-Carlo
@@ -596,16 +596,16 @@ data.
 \end{figure}
 
 In addition, other early contributions to the analysis involved comparing the
-Monte-Carlo simulated backgrounds with blinded data. This involed studying all
+Monte-Carlo simulated backgrounds with blinded data. This involved studying all
 possible permutations of GN2X working points as well as selections, and
 investigating if there was closure for the kinematic properties. Moreover, we
 wanted to study the overall yields of Monte-Carlo in comparison with the data. Although our
 studies demonstrated that \textit{some years of data} had good agreement with
-the tighest selections, the general conclusion was that the Monte-Carlo
+the tightest selections, the general conclusion was that the Monte-Carlo
 backgrounds were insufficient for the analysis. The trend appeared to show that
 recent data taking years are better with respect to both shape and yields.
 However, our results are unsurprising, as it is generally known within ATLAS
-that multijet backgrounds are not well modelled due to the intrinsic
+that multi-jet backgrounds are not well modelled due to the intrinsic
 complexity of quantum chromodynamic processes.
 
 As we are primarily studying two jets for the boosted analysis, a central tool
@@ -633,11 +633,11 @@ based on the previously mentioned VBF paper \cite{atlas_hhbbbb_vbf}.
 Crucially, I've written code to pass through the full selection pipeline for all
 the various sources of data that we have studied, namely blinded data, signal,
 Monte-Carlo background, and the current two candidates for background estimates.
-As each data type is loaded, cut selection efficiences are produced and saved.
+As each data type is loaded, cut selection efficiencies are produced and saved.
 Finally, a histogram production pipeline has been produced in order to
 selectively load given data sources, make the appropriate cuts, and produce
 histograms for the signal, data and background in order to pass to the
-statistial fitting framework. %This has been done with a command line interface
+statistical fitting framework. %This has been done with a command line interface
 
 Finally, as part of the statistical analysis, I have built a pipeline which
 takes the histograms and applies the CLS fits to produce exclusion limits.
@@ -694,18 +694,18 @@ plots, produced by the CLS fitting limits. This is shown in Figure
 \ref{fig:cls_fit_results}. 
 
 Although there are several more studies needed in order to bring to analysis to
-completion, there is a clear roadmap for each. First and foremost, the analysis
+completion, there is a clear road-map for each. First and foremost, the analysis
 is waiting on an updated version of the GN2X tagger. There were some minor
 training biases that needed to be updated. There are members of the analysis
 team currently working on integrating the updated version into the new data
 samples. Background studies are still being iterated on. However, there is a
 working baseline background estimate which I contributed to. The remaining tasks
-are to understand and improve upon any shape discrepencies, and account for them
+are to understand and improve upon any shape discrepancies, and account for them
 with uncertainties. In particular, this is important for the fitting variable
 used, that is the di-Higgs system mass $m_{HH}$. At present I am initiating
 group discussions with analysis team members to finalize background estimates.
 Furthermore, there are some final steps with the statistical fitting methods.
-Firstly, I need to properly scale and track the input sigal cross section, in
+Firstly, I need to properly scale and track the input signal cross section, in
 order to produce exact exclusion limits. Secondly, the fits need to be performed
 with combined histograms for Run 2 and Run 3. Finally, once we have our
 background estimates thoroughly understood and our full preliminary results
@@ -716,7 +716,7 @@ will be able to add these results to the analysis as well. As discussed earlier
 in this article, searches can be performed with both spin-2 and spin-0 samples
 with little change to the data pipeline or experimental methods.
 
-The timeline proposed is the following. For the beginning of the 2025 winter
+The timeline proposed is the following. For the beginning of the 2025 fall
 semester, I will have finalized the scaling for the fits, such that we have a
 physical exclusion limit. In addition, I will have produced spin-0 samples
 locally, and will have circulated kinematic plots for approval within the
@@ -724,7 +724,7 @@ analysis team. Upon approval, I can move forward with the signal request from
 central production. Throughout the winter semester, the analysis team and I can
 finalize the background estimate. During this time I can combine the statistical
 analysis for Run 2 and Run 3. That leaves an editorial board request for the end
-of the winter 2025 semester, or the first semester of 2026. The iterations with
+of the fall 2025 semester, or the winter semester of 2026. The iterations with
 the editorial board, and the internal ATLAS will take the semester. I propose to
 have my thesis ready for application to graduate by the summer semester of 2026.
 
@@ -753,28 +753,6 @@ exclusion limits, and a much more sensitive overall search. The preliminary
 results are promising thus far, and the analysis is proceeding within a
 reasonable timeline for graduation.
 
-
-% For this analysis, we have a very well motivated theoretical model to study. In
-% addition, there are many BSM models which couple to the Higgs. Therefore, it is
-% strongly motivated to do generic heavy resonance searches, in addition to the
-% graviton search. This study can be added with little additional effort, beyond
-% the signal request and preliminary data processing, which has negligeable
-% processing time. As we are building upon the previous searches done by others
-% \cite{atlas_resonant_2022}, we have a good understanding of many aspects of the
-% analysis. These include, signal topology, background estimation techniques,
-% signal, validation and control region selections, as well as a reference for
-% sensitivity. There are several improvements to the general analysis techniques
-% that give reason to believe that these results will be more sensitive than
-% previous results. First we have a considerably more data. In addition to
-% additional integrated luminosity, the $pp$ collisions are occuring at a higher
-% center of mass energy. Although this is an incremental increase, it will have a
-% disproportionate effect on heavy resonance searches. Furthermore, the
-% improvements to Xbb tagging (a roughly $2.5\times$ improvement), will yield a
-% higher signal sensitivity than before. In addition, there have been improved
-% techniques to large radius jet reconstruction and calibration since the previous
-% results were published \cite{large_r_jet}. The preliminary results are promising
-% thus far, and the analysis is proceeding within a reasonable timeline for
-% graduation.
 
 %% BIBLIOGRAPHY
 \newpage
