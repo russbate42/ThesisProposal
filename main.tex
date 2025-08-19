@@ -5,8 +5,15 @@
 \input{geometry}
 \input{commands}
 \graphicspath{{figures/}}
-% \usepackage{glossaries}
 % \input{header}
+
+% EXPERIMENTAL PACKAGES
+\usepackage{indentfirst}
+\usepackage{setspace}
+% \doublespacing    % Double spacing
+% \onehalfspacing   % 1.5 spacing
+% \singlespacing    % Single spacing (default)
+% \usepackage{glossaries}
 
 \usepackage{silence}
 \WarningsOff[lipsum]
@@ -14,12 +21,29 @@
 \usepackage{lipsum}
 \import{./}{dummy-text-generator.tex}
 
+% Bibliography
+% biblatex
+\usepackage{natbib}
+% biber
+% \usepackage[style=authoryear-comp, backend=biber]{biblatex}
+% \addbibresource{bibliography.bib}
+
 % Math command
 \newcommand{\pd}{\partial}
 
 % For glossary without glossaries package
 \newcommand{\term}[2]{\textbf{#1}: #2}
 \newcommand{\acronym}[2]{\textbf{#1} -- #2}
+
+% Paragraph formatting
+\setlength{\parskip}{1em}     % Space between paragraphs
+\setlength{\parindent}{10pt}   % Remove paragraph indentation
+% \setlength{\intextsep}{0.5\baselineskip}
+
+%% Wrap figure formatting
+\setlength{\intextsep}{6pt}     % Space above and below
+% \setlength{\columnsep}{8pt}     % Space between figure and text
+\setlength{\wrapoverhang}{0pt}  % Overhang into margin
 
 \begin{document}
 \ActivateWarningFilters[lipsum]
@@ -43,6 +67,15 @@ research paper as well as the thesis write-up and graduation.
 
 
 \section{The ATLAS Experiment}
+% \vspace{-0.4\baselineskip}
+\begin{wrapfigure}{l}{0.42\textwidth}
+    \centering
+    \vspace{-6pt}
+    \includegraphics[width=0.4\textwidth]{Aerial_view_of_the_area_where_the_LHC_ring_is_located}
+    \caption{Aerial view of the LHC, located in Geneva, Switzerland.}
+    \label{fig:aerial_view}
+\end{wrapfigure}
+
 The ATLAS experiment is a general purpose particle detector. It stands for
 \textbf{A} \textbf{T}oroidal \textbf{L}HC \textbf{A}pparatu\textbf{S} getting
 it's name from the toroidal magnet system which is integral to the design which
@@ -50,17 +83,10 @@ plays an important role in physics observations. ATLAS is designed to observe
 collisions from the full LHC beam energy and intensity. The overall dimensions
 are 44 meters across, with a diameter of 25 meters, and weighs over 7000 tonnes
 \cite{Aad_2024}. An arial view of the LHC is shown in Figure
-\ref{fig:aerial_view}.
- \newline \vspace{-4mm}
-\begin{wrapfigure}{l}{0.42\textwidth}
-    \centering
-    \includegraphics[width=0.4\textwidth]{Aerial_view_of_the_area_where_the_LHC_ring_is_located}
-    \caption{Aerial view of the LHC, located in Geneva, Switzerland.}
-    \label{fig:aerial_view}
-\end{wrapfigure} As a general purpose particle detector it is a composite of
-many different sub-detector systems, each with their own physics objectives in
-mind. The detector covers nearly the entire solid angle around the
-collision point \cite{The_ATLAS_Collaboration_2008}.
+\ref{fig:aerial_view}. As a general purpose particle detector it is a composite
+of many different sub-detector systems, each with their own physics objectives
+in mind. The detector covers nearly the entire solid angle around the collision
+point \cite{The_ATLAS_Collaboration_2008}.
 
 The LHC beam can supply protons and heavy ion nuclei at energies up to $13.6$
 TeV \cite{Aad_2024}. Particles are injected into the LHC ring in bunches and are
@@ -804,6 +830,10 @@ and the analysis is proceeding within a reasonable timeline for graduation.
 
 %% BIBLIOGRAPHY
 \newpage
+% biber
+% \printbibliography
+
+% biblatex
 % \bibliographystyle{apalike}
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
