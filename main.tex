@@ -10,6 +10,8 @@
 % EXPERIMENTAL PACKAGES
 \usepackage{indentfirst}
 \usepackage{setspace}
+\usepackage{caption}
+\usepackage{array}
 % \doublespacing    % Double spacing
 % \onehalfspacing   % 1.5 spacing
 % \singlespacing    % Single spacing (default)
@@ -99,12 +101,13 @@ boosted, and have a bunch crossing spacing of $25$ ns. Collisions occur at the
 crossing point located at the center of the detector. Beam optics govern the
 number of collisions per bunch crossing through the density of bunches and
 accuracy of the collision point. Beam collimation, and collision geometries are
-grouped into a single parameter at the LHC - $\beta^*$ \cite{Aad_2024}. The many
-collisions that occur during a single bunch crossing is known as \textit{in time
-pile-up} and is paramaterized by $\langle\mu\rangle$. This depends on beam
-conditions during each data taking year. The data used for the analysis proposed
-in this paper is shown in Figure \ref{fig:lhc_luminosity}, as measured in units
-of integrated luminosity.
+grouped into a single parameter at the LHC - $\beta^*$ \cite{Aad_2024,
+bunch_filling_schemes_bailey}. The many collisions that occur during a single
+bunch crossing is known as \textit{in time pile-up} and is paramaterized by
+$\langle\mu\rangle$ \cite{Aad_2024}. This depends on beam conditions during each
+data taking year. The data used for the analysis proposed in this paper is shown
+in Figure \ref{fig:lhc_luminosity}, as measured in units of integrated
+luminosity.
 
 \begin{figure}[t!]
     \centering
@@ -268,6 +271,7 @@ di-jets and fake jet enriched samples, as well as the efficiency and rejection
 rates for the tight working point.}
 \label{fig:jet_cleaning}
 \end{figure}
+
 Optimization studies were performed by searching for ``bumps'' in distribution
 tails. In order to aid these studies, two important sub-samples of collision
 data were created. Firstly, we look at kinematically balanced di-jet samples.
@@ -287,7 +291,8 @@ is deposited in a single calorimeter layer. EMFrac is simply the fraction of the
 energy recorded in the electromagnetic calorimeter. Comparing Figures
 \ref{subfig:fake_jets_th2} and \ref{subfig:good_jets_th2}, it is clear that the
 fake jet sample has a large number of events in the tails of the distributions
-which is indicative of high sample contamination of fake jets.
+which is indicative of high sample contamination of fake jets
+\cite{jet_cleaning_tancredi}.
 
 
 The performance of these cuts can be characterized with respect to two metrics.
@@ -498,7 +503,7 @@ within the large radius jet are defined with a variable radius clustering
 algorithm \cite{jet_substructure}. Samples are trained on \textit{associated Z
 production} Higgs - $q\bar{q}\rightarrow ZH, Z\rightarrow \mu^+\mu^-$. One
 difficulty of this training, is that with a standard Higgs production, we will
-have a distribution centered at $125 \text{GeV}$, and any neural network will
+have a distribution centered at $125 \un{GeV}$, and any neural network will
 simply adjust the weights and biases to select the 125 GeV sample. To overcome
 this, the phase space sampling is biased such that the tagger is trained on a
 flat mass distribution. This is important for simultaneous jet mass regression
@@ -585,10 +590,11 @@ selections are as follows
 
 No significant excesses were observed, and there was good agreement between the
 background estimation and observed data. Profile likelihood fits were carried
-out in bins of $M_{HH}$ for both boosted and resolved channels. The most
-significant excess is found for a signal with mass of 1100 GeV, which had a
-local significance of $2.3\;\sigma$. The global significance was found to be
-$0.4\;\sigma$ for the spin-0 resonance and $0.8\;\sigma$ for spin-2.
+out in bins of Higgs system invariant mass, $m_{HH}$ for both boosted and
+resolved channels. The most significant excess is found for a signal with mass
+of 1100 GeV, which had a local significance of $2.3\;\sigma$. The global
+significance was found to be $0.4\;\sigma$ for the spin-0 resonance and
+$0.8\;\sigma$ for spin-2.
 
 Upper limits on production cross section for gluon-gluon fusion ($\sigma_{ggF}$)
 were produced based on the $CL_S$ method, set at the 95\% confidence level. The
@@ -672,15 +678,16 @@ backgrounds are not well modelled due to the intrinsic complexity of quantum
 chromodynamic processes.
 
 As we are primarily studying two jets for the boosted analysis, a central tool
-for making region of interest selections comes from studying \textit{the mass
-plane} - a two dimensional space formed with the masses for the two Higgs
-candidate jets. As our region of interest (ROI) selections are simply a function
-of jet mass, producing mass plane plots is important for visualizing,
+for making region of interest (ROI) selections comes from studying \textit{the
+mass plane} - a two dimensional space formed with the invariant jet mass of the
+two Higgs candidate jets ($m_{H1},\;m_{H2}$). As our ROI selections are simply a
+function of jet mass, producing mass plane plots is important for visualizing,
 understanding, and optimizing our signal region definitions. Thus far I've
-written analysis code to produce these two dimensional histograms with the
-signal region selections superimposed. These ROI selections are still being
-studied as to what will provide the optimal sensitivity. The current strategy is
-based on the previous VBF paper \cite{atlas_hhbbbb_vbf}.
+written analysis code to produce two dimensional histograms of the jet mass
+plane, with the signal region selections superimposed. This is performed with
+post selction data. These ROI selections are still being studied as to what will
+provide the optimal sensitivity. The current strategy is based on the previous
+VBF paper \cite{atlas_hhbbbb_vbf}.
 
 \begin{align}
     SR &= \sqrt{\left( \frac{m_{H1}-124\;\text{GeV}}{1500\;\text{GeV}/m_{H1}}
@@ -709,10 +716,11 @@ Unfortunately, the chosen statistical framework (Cabinetry) \cite{cabinetry}
 does not handle configurations for multiple fits for many signals. Part of my
 recent work has been building and maintaining a wrapper around the statistical
 tools such that we can adjust the configuration files on the fly, and run
-separate fitting processes for each mass point.
+separate fitting processes for each mass point. At this point, I am the primary
+person responsible for pushing the resonant interpretation forward.
 
-At this point, pushing the resonant interpretation forward is primarily my
-responsibility for this analysis.
+% At this point, pushing the resonant interpretation forward is primarily my
+% responsibility for this analysis.
 
 % \begin{figure}[h]
 %     \centering
@@ -837,6 +845,50 @@ and the analysis is proceeding within a reasonable timeline for graduation.
 % \bibliographystyle{apalike}
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
+\newpage
+
+\appendix
+\section{Summary of Graduate Courses Taken}
+\begin{table}[h]
+    \centering
+    \begin{tabular*}{.8\textwidth}{l@{\extracolsep{\fill}}c}%{ l c }
+        % \noalign{\vskip0pt}\hline\noalign{\vskip3pt}
+        \multicolumn{2}{c}{University of British Columbia} \\ 
+        \noalign{\vskip0pt}\hline\noalign{\vskip3pt}
+        \multicolumn{1}{c}{Description} & Number \\  
+        Quantum Field Theory II & 508 \\
+        Particle Detection & 531 \\
+        Theory of Measurement & 509 \\ \hline \\ 
+
+        \multicolumn{2}{c}{University of Calgary} \\
+        \noalign{\vskip0pt}\hline\noalign{\vskip3pt}
+        \multicolumn{1}{c}{Description} & Number \\  
+        Plasma Physics & 509 \\
+        Computational Physics III & 581 \\
+        Relativistic Electrodynamics & 613 \\ \hline \\
+
+        \multicolumn{2}{c}{University of Amsterdam} \\
+        \noalign{\vskip0pt}\hline\noalign{\vskip3pt}
+        \multicolumn{1}{c}{Description} & - \\  
+        Particle Physics I &  \\
+        Particle Physics II & \\
+        Quantum Field Theory I & \\
+        General Relativity & \\
+        Gravitational Waves & \\
+        Astro-Particle Physics & \\
+        Physics Beyond the Standard Model & \\
+        Cosmology & \\ \hline
+    \end{tabular*} 
+    % \caption{\parbox{12cm}{\centering Courses taken as a graduate student at the
+    %         University of British Columbia, as an undergraduate at the
+    %         University of Calgary, and transferred from a masters at the University
+    %         of Amsterdam.}}
+    \caption{Courses taken as a graduate student at the University of British
+    Columbia, courses transferred from a masters degree at the University of
+    Amsterdam, and noteworthy additional courses taken as an undergraduate at
+    the University of Calgary.}
+    \label{tab:ubc_courses}
+\end{table}
 
 \end{document}
 
