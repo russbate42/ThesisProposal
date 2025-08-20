@@ -132,28 +132,6 @@ partial Run 3 at $\sqrt{s}=13.6\un{TeV}$.} %(cite me)
 
 \section{Research Contributions to ATLAS}
 
-% \section{Machine Learning for Pions}
-% \begin{figure}[h]
-%     \centering
-%     \begin{subfigure}[t]{.48\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{EnergyIQROverMedian}
-%         \caption{Neural network response demonstrating energy reconstruction
-%         median and the interquartile range.}
-%         \label{sufig:ml4p_energy_response}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[t]{.48\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{clusters_tracks_combined}
-%         \caption{Figure demonstrating the energy response complementa}
-%         \label{subfig:complimentarity}
-%     \end{subfigure}
-% \caption{Main results from the machine learning for pions project.}
-% \label{fig:ml4p_main_results.}
-% \end{figure}
-
-
 \subsection{Machine Learning for Pions}
 
 My first research project on ATLAS was within the Machine Learning for Pions
@@ -162,16 +140,17 @@ energy of particles created through collisions. Many particles and their decay
 products form energetic showers which we measure through the process of
 \textit{sampling calorimetry}. A sampling calorimeter is the combination of a
 passive medium to induce scattering, and an active medium to measure the
-resulting shower. This process can be electromegnetic in nature, or it may
-be caused through hadronic interactions (i.e. strong force interactions), and is
-often both. The entirety of the particle shower and associated interactions are
-referred to as jets. Jet energy reconstruction is a difficult process due to the
-intrinsic complexity of the underlying physical processes which are highly
-stochastic. In particular, hadronic interactions are difficult to measure due to
-the production of neutrons, which do not interact with the active medium. In
-practice, an ATLAS jet is a combination of tracking information when available,
-and groups of energy deposits in the calorimeter known as \textit{clusters}
-\cite{pflow_jets, large_r_jet}. 
+resulting shower. This can be electromagnetic in nature, or it may be caused
+by hadronic interactions (i.e. strong force interactions), and it often
+involves both processes. The entirety of the particle shower and associated
+interactions are referred to as a jet. Jet energy reconstruction is challenging
+due to the intrinsic complexity of the underlying physical processes which are
+highly stochastic. In particular, hadronic interactions are difficult to measure
+due to the multitude of ways in which the strong force can deposit energy in the
+calorimeter, some of which cannot be measured. In practice, an ATLAS jet
+is a combination of tracking information when available, and groups of energy
+deposits in the calorimeter known as \textit{clusters} \cite{pflow_jets,
+large_r_jet}. 
 
 
 The Machine Learning for Pions project has a goal of investigating if machine
